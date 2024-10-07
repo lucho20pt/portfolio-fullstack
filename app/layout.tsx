@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { Header } from '@/components/header'
 
 export const metadata: Metadata = {
   title: 'Daniel Batista | Portfolio',
@@ -12,8 +13,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className='dark'>
-      <body>{children}</body>
+    <html lang="en">
+      <body className="dark">
+        <Header />
+        <main className="flex flex-col items-center mx-auto gap-20">
+          {children}
+        </main>
+      </body>
     </html>
   )
 }
