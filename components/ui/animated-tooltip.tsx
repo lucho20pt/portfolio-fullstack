@@ -45,8 +45,9 @@ export const AnimatedTooltip = ({
     <ul className="grid md-gap-10 gap-8 md:grid-cols-7 grid-cols-4">
       {items.map((item) => (
         <li
-          className="relative flex cursor-pointer rounded-xl p-4 items-center justify-center h-full 
-           dark:bg-gradient-to-b from-indigo-500/50 to-transparent hover:drop-shadow-xs dark:hover:shadow-foreground shadow"
+          className="relative flex cursor-pointer rounded-xl p-6 items-center justify-center h-full 
+           dark:bg-gradient-to-b from-indigo-500/50 to-transparent shadow-secondary
+           hover:drop-shadow-xs dark:hover:shadow-foreground hover:bg-indigo-500/10 shadow"
           key={item.name}
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -72,8 +73,8 @@ export const AnimatedTooltip = ({
                   whiteSpace: 'nowrap',
                 }}
                 className="absolute -top-16 translate-x-1/2 flex text-xs flex-col items-center justify-center rounded-md z-50 px-4 py-2 
-                bg-secondary dark:bg-indigo-500/20
-                dark:border-2 dark:border-indigo-500"
+                bg-indigo-500/80 dark:bg-indigo-500/50
+                dark:border-2 dark:border-secondary"
               >
                 {/* <div className="absolute inset-x-10 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-secondary to-transparent h-px " />
                 <div className="absolute left-10 w-[40%] z-30 -bottom-px bg-gradient-to-r from-transparent via-secondary to-transparent h-px " /> */}
