@@ -1,6 +1,7 @@
 'use client'
 import { Inter } from 'next/font/google'
-import { GridDotBackground } from './ui/grind-dot-background'
+import { GridDotBackground } from '@/components/ui/grind-dot-background'
+import { ButtonPrimary } from '@/components/ui/tailwindcss-buttons'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -9,7 +10,7 @@ export const Hero = () => {
     <GridDotBackground>
       <section
         className={`${inter.className} antialiased py-24 container max-w-5xl
-        flex flex-col items-center text-center gap-5`}
+        flex flex-col items-center text-center gap-6`}
       >
         <p className="text-xs md:text-sm font-extralight uppercase">
           Dynamic Web Magic with Next.js
@@ -22,6 +23,7 @@ export const Hero = () => {
           Hi! I’m <span className="text-secondary">Daniel Batista</span>, an
           experient Front-End Developer based in Portugal
         </h2>
+        <ButtonPrimary className='text-xl'>Read More</ButtonPrimary>
       </section>
     </GridDotBackground>
   )
