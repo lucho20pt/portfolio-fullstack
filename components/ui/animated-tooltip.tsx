@@ -1,13 +1,13 @@
-"use client";
-import Image from "next/image";
-import React, { useState } from "react";
+'use client'
+import Image from 'next/image'
+import React, { useState } from 'react'
 import {
   motion,
   useTransform,
   AnimatePresence,
   useMotionValue,
   useSpring,
-} from "framer-motion";
+} from 'framer-motion'
 
 export interface Item {
   id: number
@@ -17,38 +17,36 @@ export interface Item {
 }
 
 interface AnimatedTooltipProps {
-    items: Item[]
-    containerClassName?: string
-    imageClassName?: string
-  }
+  items: Item[]
+}
 
-  export const AnimatedTooltip = ({ 
-    items,
-  }: AnimatedTooltipProps): JSX.Element => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const springConfig = { stiffness: 200, damping: 5 };
-  const x = useMotionValue(0); // going to set this value on mouse move
+export const AnimatedTooltip = ({
+  items,
+}: AnimatedTooltipProps): JSX.Element => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const springConfig = { stiffness: 200, damping: 5 }
+  const x = useMotionValue(0) // going to set this value on mouse move
   // rotate the tooltip
   const rotate = useSpring(
     useTransform(x, [-100, 100], [-45, 45]),
     springConfig
-  );
+  )
   // translate the tooltip
   const translateX = useSpring(
     useTransform(x, [-100, 100], [-50, 50]),
     springConfig
-  );
+  )
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const halfWidth = event.currentTarget.offsetWidth / 2
     x.set(event.nativeEvent.offsetX - halfWidth)
   }
 
-
   return (
     <ul className="grid md-gap-10 gap-8 md:grid-cols-7 grid-cols-4">
       {items.map((item) => (
         <li
-         className="relative flex rounded-lg p-6 items-center justify-center h-full bg-gradient-to-b dark:from-cyan-950/50 dark:to-cyan-700/50"
+          className="relative flex cursor-pointer rounded-xl p-4 items-center justify-center h-full 
+           dark:bg-gradient-to-b from-indigo-500/50 to-transparent hover:drop-shadow-xs dark:hover:shadow-foreground shadow"
           key={item.name}
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -62,7 +60,7 @@ interface AnimatedTooltipProps {
                   y: 0,
                   scale: 1,
                   transition: {
-                    type: "spring",
+                    type: 'spring',
                     stiffness: 260,
                     damping: 10,
                   },
@@ -71,16 +69,18 @@ interface AnimatedTooltipProps {
                 style={{
                   translateX: translateX,
                   rotate: rotate,
-                  whiteSpace: "nowrap",
+                  whiteSpace: 'nowrap',
                 }}
-                className="absolute -top-16 translate-x-1/2 flex text-xs  flex-col items-center justify-center rounded-md bg-black z-50 shadow-xl px-4 py-2"
+                className="absolute -top-16 translate-x-1/2 flex text-xs flex-col items-center justify-center rounded-md z-50 px-4 py-2 
+                bg-secondary dark:bg-indigo-500/20
+                dark:border-2 dark:border-indigo-500"
               >
-                <div className="absolute inset-x-10 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent h-px " />
-                <div className="absolute left-10 w-[40%] z-30 -bottom-px bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px " />
-                <div className="font-bold text-white relative z-30 text-base">
-                  {item.name}
+                {/* <div className="absolute inset-x-10 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-secondary to-transparent h-px " />
+                <div className="absolute left-10 w-[40%] z-30 -bottom-px bg-gradient-to-r from-transparent via-secondary to-transparent h-px " /> */}
+                <div className="text-white relative z-30 text-lg">
+                  <>{item.name}</>
                 </div>
-                <div className="text-white text-xs">{item.designation}</div>
+                <div className="text-white text-sm">{item.designation}</div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -90,10 +90,10 @@ interface AnimatedTooltipProps {
             width={100}
             src={item.image}
             alt={item.name}
-            className="object-cover !m-0 !p-0 object-top rounded-full h-14 w-14 border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
+            className="object-cover !m-0 !p-0 object-top relative transition duration-500"
           />
         </li>
       ))}
     </ul>
-  );
-};
+  )
+}
