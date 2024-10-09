@@ -23,7 +23,7 @@ export const Hero = () => {
           Hi! I’m <span className="text-secondary">Daniel Batista</span>, an
           experient Front-End Developer based in Portugal
         </h2>
-        <ButtonPrimary className='text-xl'>Read More</ButtonPrimary>
+        <ButtonPrimary className='text-xl' href="#about">Read More</ButtonPrimary>
       </section>
     </GridDotBackground>
   )
