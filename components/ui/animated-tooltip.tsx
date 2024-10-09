@@ -42,11 +42,13 @@ export const AnimatedTooltip = ({
   }
 
   return (
-    <ul className="grid md-gap-10 gap-8 md:grid-cols-7 grid-cols-4">
+    <ul className="px-5 grid 
+    gap-10
+    grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7">
       {items.map((item) => (
         <li
           className="relative flex cursor-pointer rounded-xl p-6 items-center justify-center h-full 
-           dark:bg-gradient-to-b from-indigo-500/50 to-transparent shadow-secondary
+           dark:bg-gradient-to-b from-cyan-700 to-transparent shadow-indigo-300
            hover:drop-shadow-xs dark:hover:shadow-foreground hover:bg-indigo-500/10 shadow"
           key={item.name}
           onMouseEnter={() => setHoveredIndex(item.id)}

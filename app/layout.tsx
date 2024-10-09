@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="dark">
         <Header />
-        <main className="flex flex-col items-center mx-auto gap-20">
+        <main className="flex flex-col items-center mx-auto gap-5">
           {children}
         </main>
       </body>
