@@ -7,9 +7,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TechSkills />
-      <About />
-      <Projects />
+      <div className="container flex flex-col items-center mx-auto gap-20">
+        <TechSkills />
+        <About />
+        <Projects />
+      </div>
     </>
   )
 }

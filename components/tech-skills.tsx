@@ -90,12 +90,8 @@ const TECH_ICONS: Item[] = [
 
 export const TechSkills = (): JSX.Element => {
   return (
-    <section className="flex flex-row items-center justify-center max-w-5xl px-4">
-
-        <AnimatedTooltip
-          items={TECH_ICONS}
-        />
-
+    <section className="flex flex-row items-center justify-center">
+      <AnimatedTooltip items={TECH_ICONS} />
     </section>
   )
 }

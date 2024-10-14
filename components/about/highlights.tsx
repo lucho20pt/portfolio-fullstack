@@ -10,12 +10,10 @@ interface HighlightsProps {
 export const Highlights = ({ title, description }: HighlightsProps) => {
   return (
     <article
-      className={`${inter.className} antialiased container max-w-5xl
-      flex flex-col text-left gap-4 font-light`}
+      className={`${inter.className} antialiased 
+      flex flex-col text-left gap-4 font-normal`}
     >
-      <h2 className="text-4xl md:text-6xl font-bold my-8">
-        {title}
-      </h2>
+      <h2 className="text-4xl md:text-6xl font-bold my-8">{title}</h2>
       {description.map((copy, i) => (
         <p key={i} className="text-md md:text-lg">
           {copy}

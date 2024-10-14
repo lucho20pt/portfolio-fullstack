@@ -42,8 +42,7 @@ export const AnimatedTooltip = ({
   }
 
   return (
-    <ul className="px-5 grid 
-    gap-10
+    <ul className="grid gap-10
     grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7">
       {items.map((item) => (
         <li
