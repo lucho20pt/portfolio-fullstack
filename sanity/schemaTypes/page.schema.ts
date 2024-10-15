@@ -19,6 +19,8 @@ export const page = {
         title: 'Components',
         type: 'array',
         of: [
+          { type: 'hero' },
+          { type: 'techSkills' },
           // Add more component types as needed
         ],
       },
