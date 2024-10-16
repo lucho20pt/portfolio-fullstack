@@ -4,7 +4,7 @@ export const hero = {
   type: 'object',
   options: {
     collapsible: true,
-    editModal: 'fullscreen',
+    modal: 'fullscreen',
   },
   fields: [
     {
