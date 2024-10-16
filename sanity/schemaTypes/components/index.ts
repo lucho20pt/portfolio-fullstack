@@ -1,2 +1,2 @@
 export {hero} from './hero.schema'
-export {techSkill} from './tech_skill.schema'
+export {techSkill, techSkillList} from './tech_skill.schema'
