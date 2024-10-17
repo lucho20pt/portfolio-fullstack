@@ -6,6 +6,8 @@ import { About } from '@/components/about'
 import { Projects } from '@/components/projects'
 import { getHero } from './actions'
 
+export const revalidate = 60
+
 export default async function Home() {
   const heroData: HeroProps | null = await getHero('HomePage') // allow for null
   // console.log(heroData)
