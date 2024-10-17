@@ -10,7 +10,7 @@ export const revalidate = 60
 
 export default async function Home() {
   const heroData: HeroProps | null = await getHero('HomePage') // allow for null
-  // console.log(heroData)
+  console.log("home:", heroData)
 
   return (
     <>
