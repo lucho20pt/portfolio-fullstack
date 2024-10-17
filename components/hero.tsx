@@ -1,4 +1,7 @@
+// hero.ts
+
 'use client'
+
 import { Inter } from 'next/font/google'
 import { GridDotBackground } from '@/components/ui/grind-dot-background'
 import { ButtonPrimary } from '@/components/ui/tailwindcss-buttons'
@@ -8,12 +11,17 @@ const inter = Inter({ subsets: ['latin'] })
 // HeroProps
 export interface HeroProps {
   intro?: string
-  heading: { type: 'block'; children: { text: string }[] }[]
-  description?: { type: 'block'; children: { text: string }[] }[]
+  heading: { type: string; children: { text: string }[] }[]
+  description?: { type: string; children: { text: string }[] }[]
 }
 
-export const Hero = ({ heroData }: { heroData: HeroProps }): JSX.Element => {
+export const Hero = ({ heroData }: { heroData: HeroProps | null }): JSX.Element => {
+  if (!heroData) {
+    return <p>{'loading...'}</p>
+  }
+
   const { intro, heading, description } = heroData
+  
   return (
     <GridDotBackground>
       <section

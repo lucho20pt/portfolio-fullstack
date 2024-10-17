@@ -1,4 +1,9 @@
+// actions.ts
+
+'use server'
+
 import { client } from '@/app/utils/client'
+import { HeroProps } from '@/components/hero'
 import type {
   Hero,
   Page,
@@ -15,9 +20,6 @@ import type {
   //   SanityFileAsset,
   //   Geopoint,
 } from '@/sanity.types'
-
-// HeroProps interface
-export type HeroProps = Hero
 
 // PageProps interface
 export type PageProps = Page
@@ -45,7 +47,7 @@ export async function getHero(page: string): Promise<HeroProps | null> {
       )
       if (heroComponent) {
         // console.log(heroComponent)
-        return heroComponent
+        return Object(heroComponent)
       }
     }
     return null
