@@ -31,7 +31,7 @@ export const Hero = ({
       >
         <p className="text-xs md:text-sm font-extralight uppercase">{intro}</p>
         {heading.map((headingItem, index) => (
-          <h1 key={index} className="text-4xl md:text-6xl font-bold">
+          <h1 key={index} className="text-3xl sm:text-5xl md:text-6xl font-bold">
             {headingItem.children.map((child, childIndex) => (
               <span
                 key={childIndex}
