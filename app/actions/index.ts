@@ -1,13 +1,13 @@
 // actions.ts
-
 'use server'
 
 import { client } from '@/app/utils/client'
 import { HeroProps } from '@/components/hero'
+import { TechSkillsProps } from '@/components/tech-skills'
 import type {
   Hero,
   Page,
-  //   TechSkillList,
+  TechSkillList,
   //   TechSkill,
   //   Slug,
   //   SanityImageAsset,
@@ -34,7 +34,7 @@ export async function getAllPages(): Promise<Page[]> {
   }
 }
 
-// Get hero component data
+// Get HERO component data
 export async function getHero(page: string): Promise<HeroProps | null> {
   try {
     const data = await client.fetch<Page[]>(
@@ -53,6 +53,49 @@ export async function getHero(page: string): Promise<HeroProps | null> {
     return null
   } catch (error) {
     console.error('Error fetching hero data:', error)
+    return null
+  }
+}
+
+//"imageUrl": asset->url
+// Get TECH_SKILLS component data
+export async function getTechSkills(
+  page: string
+): Promise<TechSkillsProps | null> {
+  try {
+    const data = await client.fetch<Page[]>(`
+      *[_type == "page" && title.current == "${page}"] {
+        components[] {
+          _key,
+          _type,
+          skills[] {
+            _key,
+            _type,
+            skill,
+            designation,
+            image {
+              asset -> {
+                url
+              }
+            }
+          }
+        }
+      }
+    `)
+
+    if (data.length > 0) {
+      const techSkillListComponent = data[0].components?.find(
+        (component): component is { _key: string } & TechSkillList =>
+          component._type === 'techSkillList'
+      )
+      if (techSkillListComponent) {
+        return Object(techSkillListComponent) // Adjust to return skills
+      }
+    }
+
+    return null
+  } catch (error) {
+    console.error('Error fetching tech skills data:', error)
     return null
   }
 }
