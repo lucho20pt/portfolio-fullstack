@@ -1,27 +1,28 @@
-// hero.ts
-
 'use client'
-
 import { Inter } from 'next/font/google'
 import { GridDotBackground } from '@/components/ui/grind-dot-background'
 import { ButtonPrimary } from '@/components/ui/tailwindcss-buttons'
 
 const inter = Inter({ subsets: ['latin'] })
 
-// HeroProps
+// HeroProps interface
 export interface HeroProps {
   intro?: string
-  heading: { type: string; children: { text: string }[] }[]
-  description?: { type: string; children: { text: string }[] }[]
+  heading: { type: string; children: { text: string; marks?: string[] }[] }[]
+  description?: { type: string; children: { text: string; marks?: string[] }[] }[]
 }
 
-export const Hero = ({ heroData }: { heroData: HeroProps | null }): JSX.Element => {
+export const Hero = ({
+  heroData,
+}: {
+  heroData: HeroProps | null
+}): JSX.Element => {
   if (!heroData) {
     return <p>{'loading...'}</p>
   }
 
   const { intro, heading, description } = heroData
-  
+
   return (
     <GridDotBackground>
       <section
@@ -32,7 +33,14 @@ export const Hero = ({ heroData }: { heroData: HeroProps | null }): JSX.Element 
         {heading.map((headingItem, index) => (
           <h1 key={index} className="text-4xl md:text-6xl font-bold">
             {headingItem.children.map((child, childIndex) => (
-              <span key={childIndex}>{child.text}</span>
+              <span
+                key={childIndex}
+                className={
+                  child.marks?.includes('strong') ? 'text-secondary' : ''
+                }
+              >
+                {child.text}
+              </span>
             ))}
           </h1>
         ))}
@@ -40,10 +48,18 @@ export const Hero = ({ heroData }: { heroData: HeroProps | null }): JSX.Element 
           description.map((descriptionItem, index) => (
             <h2 key={index} className="text-lg md:text-xl">
               {descriptionItem.children.map((child, childIndex) => (
-                <span key={childIndex}>{child.text}</span>
+                <span
+                  key={childIndex}
+                  className={
+                    child.marks?.includes('strong') ? 'text-secondary' : ''
+                  }
+                >
+                  {child.text}
+                </span>
               ))}
             </h2>
           ))}
+
         <ButtonPrimary className="text-xl" href="#about">
           Read More
         </ButtonPrimary>
