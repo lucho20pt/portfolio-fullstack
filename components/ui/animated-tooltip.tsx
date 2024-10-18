@@ -46,16 +46,16 @@ export const AnimatedTooltip = ({
 
   return (
     <ul
-      className="grid gap-10
-    grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7"
+      className="flex flex-wrap justify-center gap-8 md:gap-10 w-full"
     >
       {items &&
         items.map((item, index) => (
           <li
             key={item._key}
-            className="relative flex cursor-pointer rounded-xl p-6 items-center justify-center h-full 
-           dark:bg-gradient-to-b from-cyan-700 to-transparent shadow-indigo-300
-           hover:drop-shadow-xs dark:hover:shadow-foreground hover:bg-indigo-500/10 shadow"
+            className="relative flex cursor-pointer rounded-2xl p-4 md:p-5 items-center justify-around 
+            md:h-20 md:w-20 h-20 w-20
+           dark:bg-gradient-to-b from-cyan-500/50 to-transparent shadow-secondary hover:shadow-indigo-500 shadow-[2px_2px_0px_0px]
+           hover:drop-shadow-xs dark:hover:shadow-indigo-500 hover:bg-indigo-500/20"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
@@ -80,15 +80,15 @@ export const AnimatedTooltip = ({
                     whiteSpace: 'nowrap',
                   }}
                   className="absolute -top-16 translate-x-1/2 flex text-xs flex-col items-center justify-center rounded-md z-50 px-4 py-2 
-                bg-indigo-500/80 dark:bg-indigo-500/50
-                dark:border-2 dark:border-secondary"
+                bg-indigo-500/80 dark:bg-indigo-900/40
+                shadow-indigo-600 gap-1 shadow-[5px_0px_2px_2px]"
                 >
                   {/* <div className="absolute inset-x-10 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-secondary to-transparent h-px " />
                 <div className="absolute left-10 w-[40%] z-30 -bottom-px bg-gradient-to-r from-transparent via-secondary to-transparent h-px " /> */}
-                  <div className="text-white relative z-30 text-lg">
-                    <>{item.skill}</>
-                  </div>
-                  <div className="text-white text-sm">{item.designation}</div>
+                  <p className="text-indigo-100 text-2xl underline">
+                    <strong>{item.skill}</strong>
+                  </p>
+                  <p className="text-white text-lg italic">{item.designation}</p>
                 </motion.div>
               )}
             </AnimatePresence>
