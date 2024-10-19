@@ -1,15 +1,23 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-with-collision'
+import { FloatingNav } from '@/components/ui/floating-navbar'
 
 export const Header = () => {
+  const navItems = [
+    { name: 'Home', link: '/' },
+    { name: 'About', link: '#about' },
+    { name: 'Projects', link: '#projects' },
+    { name: 'Contact', link: '#contact' },
+  ]
+
   return (
     <header
-      className="flex flex-row justify-between h-auto md:h-36 max-w-7xl
-    2xl:mx-auto mx-5 my-5 lg:my-10
-    border-b-[3px] border-b-secondary border-t-[3px]  border-t-indigo-500 rounded-xl overflow-hidden"
+      className="flex flex-row justify-between h-auto md:h-44 max-w-7xl
+      2xl:mx-auto mx-5 my-5 lg:my-10
+      border-b-[3px] border-b-secondary border-t-[3px] border-t-indigo-500 rounded-xl overflow-hidden"
     >
-      <BackgroundBeamsWithCollision className="p-5 md:px-16 items-end justify-between md:justify-between">
+      <BackgroundBeamsWithCollision className="p-5 md:px-16 items-center justify-between md:justify-between">
         <h1 className="hover:opacity-80">
           <Link href="/">
             <Image
@@ -22,20 +30,7 @@ export const Header = () => {
             />
           </Link>
         </h1>
-        <nav className="flex flex-row gap-5 items-end h-full">
-          <Link href="/" className="hover:underline">
-            Home
-          </Link>
-          <Link href="/about" className="hover:underline">
-            About
-          </Link>
-          <Link href="/projects" className="hover:underline">
-            Projects
-          </Link>
-          <Link href="/contact" className="hover:underline">
-            Contact
-          </Link>
-        </nav>
+        <FloatingNav navItems={navItems} />
       </BackgroundBeamsWithCollision>
     </header>
   )
