@@ -67,13 +67,15 @@ export const FloatingNav = ({
         <Link
           href="/"
           className={cn(
-            'relative  items-center flex text-foreground dark:text-primary dark:hover:text-indigo-400 focus:text-secondary'
+            'relative items-center flex text-foreground dark:text-primary dark:hover:text-indigo-400 focus:text-secondary'
           )}
         >
-          {/* <span className="block sm:hidden">{navItem.icon}</span> */}
-          <span className="text-xl sm:text-2xl md:text-3xl xl:text-4xl">
+          <span className="text-xl sm:text-2xl md:text-3xl xl:text-4xl mr-2">
             <MdHome />
           </span>
+          <strong className="hidden text-sm sm:text-sm md:text-lg lg:text-xl">
+            Home
+          </strong>
         </Link>
         {navItems.map(
           (
