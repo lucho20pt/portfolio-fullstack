@@ -17,7 +17,7 @@ export const TechSkills = ({
   }
 
   const { intro, skills } = techSkillData
-  console.log(techSkillData)
+  // console.log(techSkillData)
 
   return (
     <section className="flex flex-col items-center justify-center">

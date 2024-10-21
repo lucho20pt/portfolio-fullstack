@@ -80,8 +80,8 @@ export const AnimatedTooltip = ({
                     whiteSpace: 'nowrap',
                   }}
                   className="absolute -top-16 translate-x-1/2 flex text-xs flex-col items-center justify-center rounded-md z-50 px-4 py-2 
-                bg-indigo-500/80 dark:bg-indigo-900/40
-                shadow-indigo-600 gap-1 shadow-[5px_0px_2px_2px]"
+                bg-indigo-500/80 dark:bg-indigo-900/70
+                shadow-secondary gap-1 shadow-[0px_0px_3px_3px]"
                 >
                   {/* <div className="absolute inset-x-10 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-secondary to-transparent h-px " />
                 <div className="absolute left-10 w-[40%] z-30 -bottom-px bg-gradient-to-r from-transparent via-secondary to-transparent h-px " /> */}
