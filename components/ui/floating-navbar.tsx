@@ -60,7 +60,7 @@ export const FloatingNav = ({
           `flex max-w-fit fixed inset-x-0 mx-auto md:top-14 lg:top-20
           border-b-2 border-transparent rounded-sm 
            z-[5000] px-2 sm:px-4 py-2 items-center justify-center space-x-3 sm:space-x-6 md:space-x-8
-          bg-gradient-to-b from-transparent to-transparent dark:from-secondary/70 dark:to-black/70`,
+          bg-gradient-to-b from-transparent to-transparent dark:from-black/30 dark:to-black/70`,
           className
         )}
       >
