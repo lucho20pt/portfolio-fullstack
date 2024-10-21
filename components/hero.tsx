@@ -24,14 +24,14 @@ export const Hero = ({
   const { intro, heading, description } = heroData
 
   return (
-    <GridDotBackground>
+    <GridDotBackground className='dark:bg-grid-white/[0.15] bg-grid-black/[0.15]'>
       <section
         className={`${inter.className} antialiased py-24 container max-w-5xl
-        flex flex-col items-center text-center gap-6`}
+        flex flex-col items-center text-center gap-8`}
       >
         <p className="text-xs md:text-sm font-extralight uppercase">{intro}</p>
         {heading.map((headingItem, index) => (
-          <h1 key={index} className="text-3xl sm:text-5xl md:text-6xl font-bold">
+          <h1 key={index} className="text-2xl sm:text-5xl lg:text-6xl font-bold">
             {headingItem.children.map((child, childIndex) => (
               <span
                 key={childIndex}
@@ -46,7 +46,7 @@ export const Hero = ({
         ))}
         {description &&
           description.map((descriptionItem, index) => (
-            <h2 key={index} className="text-lg md:text-xl">
+            <h2 key={index} className="text-xl sm:text-2xl max-w-2xl">
               {descriptionItem.children.map((child, childIndex) => (
                 <span
                   key={childIndex}
