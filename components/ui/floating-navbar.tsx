@@ -8,6 +8,7 @@ import {
 } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
+import { MdHome } from 'react-icons/md'
 
 export const FloatingNav = ({
   navItems,
@@ -29,7 +30,7 @@ export const FloatingNav = ({
     if (typeof current === 'number') {
       const direction = current! - scrollYProgress.getPrevious()!
 
-      if (scrollYProgress.get() < 0.05) {
+      if (scrollYProgress.get() < 0.005) {
         setVisible(true)
       } else {
         if (direction < 0) {
@@ -43,25 +44,37 @@ export const FloatingNav = ({
 
   return (
     <AnimatePresence mode="wait">
-      <motion.div
+      <motion.nav
         initial={{
           opacity: 1,
-          y: -200,
+          y: -300,
         }}
         animate={{
-          y: visible ? 0 : 100,
+          y: visible ? 0 : -150,
           opacity: visible ? 1 : 0,
         }}
         transition={{
-          duration: 0.05,
+          duration: 0.5,
         }}
         className={cn(
-          `flex max-w-fit fixed top-12 sm:top-12 md:top-24 lg:top-28 inset-x-0 mx-auto border-2 border-transparent dark:border-black/[0.2] rounded-md 
-          shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] px-4 py-2  items-center justify-center space-x-5
-          bg-gradient-to-b from-transparent to-transparent dark:from-cyan-500/20 dark:to-indigo-500/10`,
+          `flex max-w-fit fixed inset-x-0 mx-auto md:top-14 lg:top-20
+          border-b-2 border-transparent rounded-sm 
+           z-[5000] px-2 sm:px-4 py-2 items-center justify-center space-x-3 sm:space-x-6 md:space-x-8
+          bg-gradient-to-b from-transparent to-transparent dark:from-secondary/70 dark:to-black/70`,
           className
         )}
       >
+        <Link
+          href="/"
+          className={cn(
+            'relative  items-center flex text-foreground dark:text-primary dark:hover:text-indigo-400 focus:text-secondary'
+          )}
+        >
+          {/* <span className="block sm:hidden">{navItem.icon}</span> */}
+          <span className="text-xl sm:text-2xl md:text-3xl xl:text-4xl">
+            <MdHome />
+          </span>
+        </Link>
         {navItems.map(
           (
             navItem: { name: string; link: string; icon?: JSX.Element },
@@ -71,11 +84,13 @@ export const FloatingNav = ({
               key={`link=${idx}`}
               href={navItem.link}
               className={cn(
-                'relative dark:text-primary items-center flex space-x-1 text-foreground dark:hover:text-secondary focus:text-secondary'
+                'relative items-center flex text-foreground dark:text-primary dark:hover:text-indigo-400 hover:underline focus:text-secondary'
               )}
             >
               {/* <span className="block sm:hidden">{navItem.icon}</span> */}
-              <span className="text-sm md:text-xl">{navItem.name}</span>
+              <strong className="text-sm sm:text-sm md:text-lg lg:text-xl">
+                {navItem.name}
+              </strong>
             </Link>
           )
         )}
@@ -83,7 +98,7 @@ export const FloatingNav = ({
           <span>Login</span>
           <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
         </button> */}
-      </motion.div>
+      </motion.nav>
     </AnimatePresence>
   )
 }
