@@ -1,47 +1,51 @@
+import React from 'react'
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
 
 const PROJECTS: ProjectsProps[] = [
   {
     title: 'Dynamic Web Experiences',
-    subtitle: 'Leveraging HTML5 and JavaScript for Modern Web Solutions',
-    image: 'path/to/dynamic-web-experiences.jpg',
+    description: 'Leveraging HTML5 and JavaScript for Modern Web Solutions',
+    image: '/anf-1.png',
+  },
+  {
+    // title: 'Advanced Web Applications',
+    title: 'I’m very flexible with time zone communications',
+    description: 'Building Scalable Apps with Next.js, TypeScript, and Sanity',
+    // image: '/parallel-1.png',
+    globe: true,
   },
   {
     title: 'Responsive Design Mastery',
-    subtitle:
+    description:
       'Creating Mobile-First Websites with HTML5 and CSS3, Sass, Bootstrap, and Tailwind',
-    image: 'path/to/responsive-design-mastery.jpg',
+    image: '/continente-1.png',
   },
   {
     title: 'Content Management Excellence',
-    subtitle: 'Utilizing WordPress and PHP for Efficient Working Experience',
-    image: 'path/to/content-management-excellence.jpg',
-  },
-  {
-    title: 'Advanced Web Applications',
-    subtitle: 'Building Scalable Apps with Next.js, TypeScript, and Strapi',
-    image: 'path/to/advanced-web-applications.jpg',
-  },
-  {
-    title: 'Headless CMS Integration',
-    subtitle: 'Experience with Strapi and Sanity',
-    image: 'path/to/headless-cms-integration.jpg',
+    description: 'Utilizing WordPress and PHP for Efficient Working Experience',
+    image: '/parallel-1.png',
   },
   {
     title: 'E-commerce Solutions',
-    subtitle:
+    description:
       'Developing Secure and Efficient Online Stores with HTML5, JavaScript, and PHP',
-    image: 'path/to/ecommerce-solutions.jpg',
+    image: '/quinta-3.png',
+  },
+  {
+    title: 'Headless CMS Integration',
+    description: 'Experience with Strapi and Sanity',
+    image: '/portfolio-1.png',
   },
 ]
 
 export interface ProjectsProps {
   title: string
-  subtitle?: string
+  description?: string
   image?: string
+  globe?: boolean
 }
 
-export const Projects = (): JSX.Element => {
+export const Projects = (): React.JSX.Element => {
   const projects = PROJECTS
   const getClassName = (index: number): string => {
     const groupIndex = Math.floor(index / 8)
@@ -52,18 +56,25 @@ export const Projects = (): JSX.Element => {
       : ''
   }
 
+  const intro: string = 'Powered with next.js 15 & sanity as CMS'
+
   return (
-    <section id="projects">
-      {/* <h2 className="text-4xl md:text-6xl font-bold my-4 text-center">
-        Projects
-      </h2> */}
+    <section
+      id="projects"
+      className="flex flex-col items-center justify-center max-w-7xl"
+    >
+      <h1 className="text-xl md:text-3xl font-extralight uppercase p-10 text-slate-400">
+        {intro}
+      </h1>
       <BentoGrid>
-        {projects.map(({ title, subtitle }, index) => (
+        {projects.map(({ title, description, image, globe }, index) => (
           <BentoGridItem
             key={index}
             className={getClassName(index)}
             title={title}
-            description={subtitle}
+            description={description}
+            image={image}
+            globe={globe}
           />
         ))}
       </BentoGrid>

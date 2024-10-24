@@ -1,54 +1,78 @@
-import { cn } from "@/lib/utils";
+'use client'
+import React from 'react'
+import { cn } from '@/lib/utils'
+import Image from 'next/image'
+import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
+import { MyGlobe } from '@/components/projects/myglobe'
 
 export const BentoGrid = ({
   className,
   children,
 }: {
-  className?: string;
-  children?: React.ReactNode;
+  className?: string
+  children?: React.ReactNode
 }) => {
   return (
     <div
       className={cn(
-        "grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto ",
+        'grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl mx-auto ',
         className
       )}
     >
       {children}
     </div>
-  );
-};
+  )
+}
 
 export const BentoGridItem = ({
   className,
   title,
   description,
-  header,
-  icon,
+  image,
+  globe,
 }: {
-  className?: string;
-  title?: string | React.ReactNode;
-  description?: string | React.ReactNode;
-  header?: React.ReactNode;
-  icon?: React.ReactNode;
+  className?: string
+  title: string
+  description?: string
+  image?: string
+  globe?: boolean
 }) => {
   return (
-    <div
+    <article
       className={cn(
-        "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4",
+        'row-span-1 group/bento justify-between flex flex-col rounded-3xl h-64',
         className
       )}
     >
-      {header}
-      <div className="group-hover/bento:translate-x-2 transition duration-200">
-        {icon}
-        <h3 className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
-          {title}
-        </h3>
-        <p className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
-          {description}
-        </p>
-      </div>
-    </div>
-  );
-};
+      <ParallaxProvider>
+        <div className="overflow-hidden rounded-lg bg-black border-8">
+          <header
+            className="flex flex-col overflow-hidden z-10 gap-1 p-4 relative 
+        dark:bg-gradient-to-b from-black to-black/80"
+          >
+            <h3 className="text-xl font-bold text-neutral-600 dark:text-secondary">
+              {title}
+            </h3>
+            <p className="text-primary text-sm md:text-lg">{description}</p>
+          </header>
+
+          <Parallax speed={10}>
+            {image && (
+              <Image
+                src={image}
+                alt={title}
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="w-full h-auto relative top-[-98px] opacity-90"
+              />
+            )}
+          </Parallax>
+          {globe && (
+            <MyGlobe className="relative top-[-50%] left-[15%] flex items-center justify-center" />
+          )}
+        </div>
+      </ParallaxProvider>
+    </article>
+  )
+}

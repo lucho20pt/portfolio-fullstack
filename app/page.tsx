@@ -18,16 +18,17 @@ export default async function Home() {
     <>
       {heroData ? <Hero heroData={heroData} /> : <p>{'loading...'}</p>}
 
-      <div className="container flex flex-col items-center mx-auto gap-20">
+      <div className="flex flex-col items-center mx-auto gap-20 max-w-full">
         {techSkillData ? (
           <TechSkills techSkillData={techSkillData} />
         ) : (
           <p>{'loading...'}</p>
         )}
 
-        <About />
 
         <Projects />
+        <About />
+
       </div>
     </>
   )
