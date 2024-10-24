@@ -17,7 +17,7 @@ export const FloatingNav = ({
   navItems: {
     name: string
     link: string
-    icon?: JSX.Element
+    icon?: React.JSX.Element
   }[]
   className?: string
 }) => {
@@ -79,7 +79,7 @@ export const FloatingNav = ({
         </Link>
         {navItems.map(
           (
-            navItem: { name: string; link: string; icon?: JSX.Element },
+            navItem: { name: string; link: string; icon?: React.JSX.Element },
             idx: number
           ) => (
             <Link
