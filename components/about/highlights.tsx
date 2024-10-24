@@ -1,10 +1,11 @@
+import React from 'react'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
 interface HighlightsProps {
-  title: JSX.Element | string
-  description: (JSX.Element | string)[]
+  title: React.JSX.Element | string
+  description: (React.JSX.Element | string)[]
 }
 
 export const Highlights = ({ title, description }: HighlightsProps) => {
