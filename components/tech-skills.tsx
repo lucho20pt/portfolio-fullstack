@@ -1,4 +1,5 @@
 'use client'
+import React from 'react'
 import { AnimatedTooltip, Item } from '@/components/ui/animated-tooltip'
 
 export type TechSkillsProps = {
@@ -11,7 +12,7 @@ export const TechSkills = ({
   techSkillData,
 }: {
   techSkillData: TechSkillsProps | null
-}): JSX.Element => {
+}): React.JSX.Element => {
   if (!techSkillData) {
     return <p>{'loading...'}</p>
   }
@@ -20,7 +21,7 @@ export const TechSkills = ({
   // console.log(techSkillData)
 
   return (
-    <section className="flex flex-col items-center justify-center">
+    <section className="flex flex-col items-center justify-center max-w-5xl">
       <h1 className="text-xl md:text-3xl font-extralight uppercase p-10 text-slate-400">
         {intro}
       </h1>
