@@ -26,12 +26,8 @@ export type PageProps = Page
 
 // Get all pages
 export async function getAllPages(): Promise<Page[]> {
-  try {
     const data = await client.fetch<Page[]>(`*[_type == "page"] `)
     return data
-  } catch (error) {
-    throw error // Rethrow the error to be caught by the caller
-  }
 }
 
 // Get HERO component data
