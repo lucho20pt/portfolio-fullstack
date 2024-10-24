@@ -25,7 +25,7 @@ interface AnimatedTooltipProps {
 
 export const AnimatedTooltip = ({
   items,
-}: AnimatedTooltipProps): JSX.Element => {
+}: AnimatedTooltipProps): React.JSX.Element => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const springConfig = { stiffness: 200, damping: 5 }
   const x = useMotionValue(0) // going to set this value on mouse move
