@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="dark">
         <Header />
-        <main className="container flex flex-col items-center mx-auto gap-12 pb-20 max-w-7xl">
+        <main className="flex flex-col items-center mx-auto gap-12 pb-20 max-w-7xl">
           {children}
         </main>
       </body>
