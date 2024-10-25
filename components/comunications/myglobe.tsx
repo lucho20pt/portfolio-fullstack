@@ -12,8 +12,8 @@ export const MyGlobe = ({ className }: { className?: string }) => {
 
     const globe = createGlobe(canvasRef.current, {
       devicePixelRatio: 2,
-      width: 600 * 2,
-      height: 600 * 2,
+      width: 400 * 2,
+      height: 400 * 2,
       phi: 0,
       theta: 0,
       dark: 1,
@@ -44,7 +44,7 @@ export const MyGlobe = ({ className }: { className?: string }) => {
   return (
     <canvas
       ref={canvasRef}
-      style={{ width: 600, height: 600, maxWidth: '100%', aspectRatio: 1 }}
+      style={{ maxWidth: '400px', aspectRatio: 1 }}
       className={className}
     />
   )

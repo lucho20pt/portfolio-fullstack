@@ -3,7 +3,7 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
-import { MyGlobe } from '@/components/projects/myglobe'
+import { MyGlobe } from '@/components/comunications/myglobe'
 
 export const BentoGrid = ({
   className,
