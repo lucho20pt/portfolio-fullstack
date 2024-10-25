@@ -8,11 +8,9 @@ const PROJECTS: ProjectsProps[] = [
     image: '/anf-1.png',
   },
   {
-    // title: 'Advanced Web Applications',
-    title: 'I’m very flexible with time zone communications',
+    title: 'Advanced Web Applications',
     description: 'Building Scalable Apps with Next.js, TypeScript, and Sanity',
-    // image: '/parallel-1.png',
-    globe: true,
+    image: '/anf-1.png',
   },
   {
     title: 'Responsive Design Mastery',
