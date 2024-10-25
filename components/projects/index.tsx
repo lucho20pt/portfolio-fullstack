@@ -63,7 +63,7 @@ export const Projects = (): React.JSX.Element => {
       id="projects"
       className="flex flex-col items-center justify-center max-w-7xl"
     >
-      <h1 className="text-xl md:text-3xl font-extralight uppercase p-10 text-slate-400">
+      <h1 className="text-xl md:text-3xl font-extralight uppercase md:px-10 mb-10 text-slate-400 text-center">
         {intro}
       </h1>
       <BentoGrid>
