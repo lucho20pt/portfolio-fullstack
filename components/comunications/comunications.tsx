@@ -1,5 +1,6 @@
 import React from 'react'
 import { MyGlobe } from '@/components/comunications/myglobe'
+import { ButtonPrimary } from '@/components/ui/tailwindcss-buttons'
 
 export const Comunications = () => {
   return (
@@ -10,11 +11,14 @@ export const Comunications = () => {
         </h2>
       </header>
       <div
-        className="overflow-hidden flex flex-row items-start justify-center
+        className="overflow-hidden flex flex-row items-start justify-center mb-12
         h-[200px] shadow-secondary shadow-[0px_8px_8px_-8px]"
       >
         <MyGlobe className="w-[400px] h-[400px]" />
       </div>
+      <ButtonPrimary className="text-xl" href="comtact">
+        Send Me a Message
+      </ButtonPrimary>
     </section>
   )
 }
