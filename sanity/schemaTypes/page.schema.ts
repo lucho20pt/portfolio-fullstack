@@ -21,6 +21,7 @@ export const page = {
       of: [
         {type: 'hero'},
         {type: 'techSkillList'},
+        {type: 'services'},
         // Add more component types as needed
       ],
     },

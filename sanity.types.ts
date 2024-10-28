@@ -68,6 +68,33 @@ export type Geopoint = {
   alt?: number
 }
 
+export type Service = {
+  _type: 'service'
+  title?: string
+  description?: string
+  image?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+}
+
+export type Services = {
+  _type: 'services'
+  intro?: string
+  service?: Array<
+    {
+      _key: string
+    } & Service
+  >
+}
+
 export type TechSkill = {
   _type: 'techSkill'
   image?: {
@@ -87,6 +114,7 @@ export type TechSkill = {
 
 export type TechSkillList = {
   _type: 'techSkillList'
+  intro?: string
   skills?: Array<
     {
       _key: string
@@ -149,6 +177,9 @@ export type Page = {
     | ({
         _key: string
       } & TechSkillList)
+    | ({
+        _key: string
+      } & Services)
   >
 }
 
@@ -221,6 +252,8 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | Service
+  | Services
   | TechSkill
   | TechSkillList
   | Hero
