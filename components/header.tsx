@@ -13,7 +13,7 @@ export const Header = () => {
 
   return (
     <header
-      className="flex h-20 sm:h-28 md:h-36 lg:h-44 mb-5
+      className="flex min-w-[400px] h-28 md:h-36 lg:h-44 mb-5 overflow-hidden
       shadow-secondary shadow-[0px_4px_5px_0px] 
       bg-gradient-to-b from-transparent to-transparent dark:from-secondary/50 dark:to-transparent"
     >
