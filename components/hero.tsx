@@ -67,7 +67,7 @@ export const Hero = ({
             </h2>
           ))}
 
-        <ButtonPrimary className="text-xl" href="#stack">
+        <ButtonPrimary className="text-xl" href="#stack" aria-label="My Stack">
           My Stack
         </ButtonPrimary>
       </section>

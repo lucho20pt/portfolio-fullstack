@@ -59,7 +59,7 @@ export const Services = ({
           ))}
         </ul>
       )}
-      <ButtonPrimary className="text-xl" href="/contact">
+      <ButtonPrimary className="text-xl" href="/contact" aria-label="Contact Me">
         Contact Me
       </ButtonPrimary>
     </section>

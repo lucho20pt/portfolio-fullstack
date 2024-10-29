@@ -16,7 +16,7 @@ export const Comunications = () => {
       >
         <MyGlobe className="w-[400px] h-[400px]" />
       </div>
-      <ButtonPrimary className="text-xl" href="comtact">
+      <ButtonPrimary className="text-xl" href="/contact" aria-label="Send Me a Message">
         Send Me a Message
       </ButtonPrimary>
     </section>
