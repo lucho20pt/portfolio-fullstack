@@ -2,6 +2,7 @@ import React from 'react'
 import type { Metadata } from 'next'
 import './globals.css'
 import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
 
 export const metadata: Metadata = {
   title: 'Daniel Batista | Portfolio',
@@ -20,6 +21,7 @@ export default function RootLayout({
         <main className="flex flex-col items-center mx-auto gap-12 pb-20 max-w-7xl">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   )
