@@ -67,8 +67,8 @@ export const Hero = ({
             </h2>
           ))}
 
-        <ButtonPrimary className="text-xl" href="#about">
-          Read More
+        <ButtonPrimary className="text-xl" href="#stack">
+          My Stack
         </ButtonPrimary>
       </section>
     </GridDotBackground>

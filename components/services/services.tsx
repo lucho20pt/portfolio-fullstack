@@ -1,5 +1,6 @@
 import React from 'react'
 import { Inter } from 'next/font/google'
+import { ButtonPrimary } from '@/components/ui/tailwindcss-buttons'
 const inter = Inter({ subsets: ['latin'] })
 
 export type Service = {
@@ -26,9 +27,9 @@ export const Services = ({
   return (
     <section
       id="services"
-      className="container flex flex-col items-center justify-center text-center"
+      className="container flex flex-col items-center justify-center text-center gap-10"
     >
-      <header className="mb-12">
+      <header>
         <h2 className="text-xl md:text-3xl font-extralight uppercase md:px-10 text-slate-400 max-w-3xl">
           {intro}
         </h2>
@@ -58,6 +59,9 @@ export const Services = ({
           ))}
         </ul>
       )}
+      <ButtonPrimary className="text-xl" href="/contact">
+        Contact Me
+      </ButtonPrimary>
     </section>
   )
 }
