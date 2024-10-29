@@ -35,22 +35,23 @@ export const Services = ({
       </header>
 
       {service && (
-        <ul className="flex flex-row items-center justify-center flex-wrap gap-6 lg:gap-10">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-10">
           {service.map((item, index) => (
             <li
               key={index}
-              className={`flex flex-col w-full lg:w-1/3 xl:w-1/4 items-center justify-center py-2 px-6 lg:p-6 flex-wrap
-                max-w-[320px]
-              rounded-xl border-2 border-secondary/80 ${inter.className}`}
-              // [&_*]:min-h-24"
+              className={`flex flex-col w-full items-center justify-center py-1 px-6 lg:p-6 
+              max-w-[320px]
+              rounded-xl sm:border-2 border-secondary/80 ${inter.className}`}
             >
-              <h3 className={`flex items-end text-xl lg:text-2xl min-h-24 uppercase`}>
+              <h3
+                className={`flex items-end  sm:min-h-24 md:min-h-28 text-xl lg:text-2xl uppercase`}
+              >
                 {item.title}
               </h3>
 
               <hr className="flex w-full my-4 border-secondary/90" />
 
-              <p className="flex items-start min-h-28 font-extralight">
+              <p className="flex items-start sm:min-h-24 md:min-h-28 text-sm lg:text-lg font-extralight">
                 {item.description}
               </p>
             </li>
