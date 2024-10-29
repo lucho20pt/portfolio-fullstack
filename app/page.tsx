@@ -2,8 +2,6 @@
 
 import { Hero, HeroProps } from '@/components/hero'
 import { TechSkills, TechSkillsProps } from '@/components/tech-skills'
-// import { About } from '@/components/about'
-// import { Projects } from '@/components/projects'
 import { getHero, getTechSkills, getServices } from './actions'
 import { Comunications } from '@/components/comunications/comunications'
 import { Services, ServicesProps } from '@/components/services/services'
@@ -11,7 +9,7 @@ import { Services, ServicesProps } from '@/components/services/services'
 export const revalidate = 60
 
 export default async function Home() {
-  const page = "HomePage"
+  const page = 'HomePage'
   const heroData: HeroProps | null = await getHero(page) // allow for null
   const techSkillData: TechSkillsProps | null = await getTechSkills(page) // allow for null
   const servicesData: ServicesProps | null = await getServices(page)
@@ -29,10 +27,12 @@ export default async function Home() {
 
         <Comunications />
 
-        <Services servicesData={servicesData} />
+        {servicesData ? (
+          <Services servicesData={servicesData} />
+        ) : (
+          <p>{'loading...'}</p>
+        )}
 
-        {/* <Projects /> */}
-        {/* <About /> */}
       </div>
     </>
   )
