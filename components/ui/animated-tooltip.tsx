@@ -53,7 +53,7 @@ export const AnimatedTooltip = ({
           <li
             key={item._key}
             className="relative flex cursor-pointer rounded-2xl p-4 md:p-5 items-center justify-around 
-            md:h-20 md:w-20 h-20 w-20
+            md:h-20 md:w-20 h-16 w-16
            dark:bg-gradient-to-b from-cyan-500/50 to-transparent shadow-secondary hover:shadow-indigo-500 shadow-[2px_2px_0px_0px]
            hover:drop-shadow-xs dark:hover:shadow-indigo-500 hover:bg-indigo-500/20"
             onMouseEnter={() => setHoveredIndex(index)}
