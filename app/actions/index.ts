@@ -50,6 +50,7 @@ export async function getTechSkills(
           _key,
           _type,
           intro,
+          subintro,
           skills[] {
             _key,
             _type,

@@ -115,6 +115,7 @@ export type TechSkill = {
 export type TechSkillList = {
   _type: 'techSkillList'
   intro?: string
+  subintro?: string
   skills?: Array<
     {
       _key: string

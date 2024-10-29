@@ -33,6 +33,11 @@ export const techSkillList = defineType({
       title: 'Intro Title',
       type: 'string',
     }),
+    defineField({
+      name: 'subintro',
+      title: 'Sub Intro Title',
+      type: 'string',
+    }),
     {
       name: 'skills',
       title: 'Skills',
