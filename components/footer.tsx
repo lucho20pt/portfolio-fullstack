@@ -5,7 +5,7 @@ import { FaLinkedin, FaLink } from 'react-icons/fa6'
 
 export const Footer = () => {
   return (
-    <div className="border-t-2 border-secondary py-10">
+    <div className="border-t-2 border-secondary py-10 pb-0">
       
       <div className="container flex flex-row items-center justify-between text-slate-400 text-sm">
         <Link href="/" className='hover:text-slate-100'>
@@ -19,7 +19,8 @@ export const Footer = () => {
           />
         </Link>
 
-        <div className=" flex flex-row gap-20">
+        {/* nav */}
+        <div className="flex flex-row gap-12 w-[50%] sm:w-auto">
           <div>
             <p className="mb-4">
               <b>Social</b>
@@ -37,7 +38,7 @@ export const Footer = () => {
               </li>
             </ul>
           </div>
-          <div>
+          <nav>
             <p className="mb-4">
               <b>Sitemap</b>
             </p>
@@ -58,10 +59,12 @@ export const Footer = () => {
                 <Link href="/">Privacy</Link>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
+
       </div>
-      <p className="text-center text-slate-400 text-sm py-4">@Copyright 2024</p>
+
+      <p className="text-center text-slate-400 text-xs py-4">@Copyright 2024</p>
     </div>
   )
 }
