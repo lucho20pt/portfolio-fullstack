@@ -1,8 +1,9 @@
 // home.ts
 import { Metadata } from 'next'
+import { getHero, getTechSkills, getServices, getMetadata } from '@/app/actions'
+
 import { Hero, HeroProps } from '@/components/hero'
 import { TechSkills, TechSkillsProps } from '@/components/tech-skills'
-import { getHero, getTechSkills, getServices, getMetadata } from './actions'
 import { Comunications } from '@/components/comunications/comunications'
 import { Services, ServicesProps } from '@/components/services/services'
 
