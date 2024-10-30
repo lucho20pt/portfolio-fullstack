@@ -1092,14 +1092,14 @@
         "value": {
           "type": "object",
           "attributes": {
-            "metaTitle": {
+            "title": {
               "type": "objectAttribute",
               "value": {
                 "type": "string"
               },
               "optional": true
             },
-            "metaDescription": {
+            "description": {
               "type": "objectAttribute",
               "value": {
                 "type": "string"

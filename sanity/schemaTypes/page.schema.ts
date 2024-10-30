@@ -31,13 +31,13 @@ export const page = {
       type: 'object',
       fields: [
         {
-          name: 'metaTitle',
+          name: 'title',
           title: 'Meta Title',
           type: 'string',
           validation: (rule: Rule) => rule.required(),
         },
         {
-          name: 'metaDescription',
+          name: 'description',
           title: 'Meta Description',
           type: 'text',
           rows: 3,

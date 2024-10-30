@@ -183,8 +183,8 @@ export type Page = {
       } & Services)
   >
   metadata?: {
-    metaTitle?: string
-    metaDescription?: string
+    title?: string
+    description?: string
   }
 }
 
