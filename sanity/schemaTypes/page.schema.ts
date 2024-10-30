@@ -25,6 +25,26 @@ export const page = {
         // Add more component types as needed
       ],
     },
+    {
+      name: 'metadata',
+      title: 'Metadata',
+      type: 'object',
+      fields: [
+        {
+          name: 'metaTitle',
+          title: 'Meta Title',
+          type: 'string',
+          validation: (rule: Rule) => rule.required(),
+        },
+        {
+          name: 'metaDescription',
+          title: 'Meta Description',
+          type: 'text',
+          rows: 3,
+          validation: (rule: Rule) => rule.required(),
+        },
+      ],
+    },
   ],
   preview: {
     select: {
@@ -32,3 +52,4 @@ export const page = {
     },
   },
 }
+
