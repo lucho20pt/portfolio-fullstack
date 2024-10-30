@@ -6,9 +6,9 @@ import { GridDotBackground } from '@/components/ui/grind-dot-background'
 
 export const Header = () => {
   const navItems = [
-    { name: 'About', link: '#about' },
-    { name: 'Projects', link: '#projects' },
-    { name: 'Contact', link: '#contact' },
+    { name: 'About', link: '/about' },
+    { name: 'Projects', link: '/projects' },
+    { name: 'Contact', link: '/contact' },
   ]
 
   return (
