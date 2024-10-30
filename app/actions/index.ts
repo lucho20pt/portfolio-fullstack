@@ -16,6 +16,27 @@ export async function getAllPages(): Promise<Page[]> {
   return data
 }
 
+// Get Metadata
+export async function getMetadata(
+  page: string
+): Promise<{ title: string; description: string } | null> {
+  const data = await client.fetch<Page[]>(
+    `*[_type == "page" && title.current == "${page}"]
+    {
+      metadata
+    }`
+  )
+
+  if (data.length > 0) {
+    const metadata = data[0]?.metadata
+    if (metadata) {
+      return Object(metadata)
+    }
+  }
+
+  return null
+}
+
 // Get HERO component data
 export async function getHero(page: string): Promise<HeroProps | null> {
   try {
