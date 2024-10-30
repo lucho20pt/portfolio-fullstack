@@ -182,6 +182,10 @@ export type Page = {
         _key: string
       } & Services)
   >
+  metadata?: {
+    metaTitle?: string
+    metaDescription?: string
+  }
 }
 
 export type SanityImageCrop = {
