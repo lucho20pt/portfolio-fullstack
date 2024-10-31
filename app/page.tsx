@@ -4,8 +4,8 @@ import { getHero, getTechSkills, getServices, getMetadata } from '@/app/actions'
 
 import { Hero, HeroProps } from '@/components/hero'
 import { TechSkills, TechSkillsProps } from '@/components/tech-skills'
-import { Comunications } from '@/components/comunications/comunications'
-import { Services, ServicesProps } from '@/components/services/services'
+import { Comunications } from '@/components/comunications'
+import { Services, ServicesProps } from '@/components/services'
 
 export const revalidate = 60
 const page = 'HomePage'
