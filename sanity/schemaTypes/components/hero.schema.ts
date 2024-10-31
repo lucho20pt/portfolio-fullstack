@@ -1,4 +1,5 @@
 import {defineType, defineField} from 'sanity'
+import {Rule} from '@sanity/types'
 
 export const hero = defineType({
   name: 'hero',
@@ -25,6 +26,25 @@ export const hero = defineType({
       type: 'array',
       of: [{type: 'block'}],
     }),
+    {
+      name: 'button',
+      title: 'Button',
+      type: 'object',
+      fields: [
+        {
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+          validation: (rule: Rule) => rule.required(),
+        },
+        {
+          name: 'link',
+          title: 'Link',
+          type: 'string',
+          validation: (rule: Rule) => rule.required(),
+        },
+      ],
+    },
     // Add more fields as needed
   ],
   preview: {

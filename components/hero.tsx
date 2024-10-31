@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ['latin'] })
 // HeroProps interface
 export interface HeroProps {
   intro?: string
+  button?: { title: string; link: string }
   heading: { type: string; children: { text: string; marks?: string[] }[] }[]
   description?: {
     type: string
@@ -25,7 +26,7 @@ export const Hero = ({
     return <p>{'loading...'}</p>
   }
 
-  const { intro, heading, description } = heroData
+  const { intro, heading, description, button } = heroData
 
   return (
     <GridDotBackground className="dark:bg-grid-white/[0.15] bg-grid-black/[0.15]">
@@ -67,9 +68,15 @@ export const Hero = ({
             </h2>
           ))}
 
-        <ButtonPrimary className="text-xl" href="#stack" aria-label="My Stack">
-          My Stack
-        </ButtonPrimary>
+        {button && (
+          <ButtonPrimary
+            className="text-xl"
+            href={button.link}
+            aria-label={button.title}
+          >
+            {button.title}
+          </ButtonPrimary>
+        )}
       </section>
     </GridDotBackground>
   )
