@@ -2,10 +2,17 @@
 'use server'
 
 import { client } from '@/app/utils/client'
+import type {
+  Hero,
+  Page,
+  TechSkillList,
+  Services,
+  Article,
+} from '@/sanity.types'
 import { HeroProps } from '@/components/hero'
 import { TechSkillsProps } from '@/components/tech-skills'
-import { ServicesProps } from '@/components/services/services'
-import type { Hero, Page, TechSkillList, Services } from '@/sanity.types'
+import { ServicesProps } from '@/components/services'
+import { ArticleProps } from '@/components/about/article'
 
 // PageProps interface
 export type PageProps = Page
@@ -43,6 +50,7 @@ export async function getHero(page: string): Promise<HeroProps | null> {
     const data = await client.fetch<Page[]>(
       `*[_type == "page" && title.current == "${page}"]`
     )
+
     if (data.length > 0) {
       const heroComponent = data[0].components?.find(
         (component): component is { _key: string } & Hero =>
@@ -52,7 +60,8 @@ export async function getHero(page: string): Promise<HeroProps | null> {
         // console.log(heroComponent)
         return Object(heroComponent)
       }
-    }
+    } 
+
     return null
   } catch (error) {
     console.error('Error fetching hero data:', error)
@@ -65,27 +74,9 @@ export async function getTechSkills(
   page: string
 ): Promise<TechSkillsProps | null> {
   try {
-    const data = await client.fetch<Page[]>(`
-      *[_type == "page" && title.current == "${page}"] {
-        components[] {
-          _key,
-          _type,
-          intro,
-          subintro,
-          skills[] {
-            _key,
-            _type,
-            skill,
-            designation,
-            image {
-              asset -> {
-                url
-              }
-            }
-          }
-        }
-      }
-    `)
+    const data = await client.fetch<Page[]>(
+      `*[_type == "page" && title.current == "${page}"]`
+    )
 
     if (data.length > 0) {
       const techSkillListComponent = data[0].components?.find(
@@ -93,7 +84,7 @@ export async function getTechSkills(
           component._type === 'techSkillList'
       )
       if (techSkillListComponent) {
-        return Object(techSkillListComponent) // Adjust to return skills
+        return Object(techSkillListComponent)
       }
     }
 
@@ -107,27 +98,9 @@ export async function getTechSkills(
 // Get SERVICES component data
 export async function getServices(page: string): Promise<ServicesProps | null> {
   try {
-    const data = await client.fetch<Page[]>(`
-      *[_type == "page" && title.current == "${page}"] 
-        {
-          components[] {
-            _key,
-            _type,
-            intro,
-            service[] {
-              _key,
-              _type,
-              title,
-              description,
-              image {
-                asset -> {
-                  url
-                }
-              }
-            }
-          }
-        }
-    `)
+    const data = await client.fetch<Page[]>(
+      `*[_type == "page" && title.current == "${page}"]`
+    )
 
     if (data.length > 0) {
       const servicesComponent = data[0].components?.find(
@@ -135,13 +108,40 @@ export async function getServices(page: string): Promise<ServicesProps | null> {
           component._type === 'services'
       )
       if (servicesComponent) {
-        return Object(servicesComponent) // Adjust to return skills
+        return Object(servicesComponent)
       }
     }
 
     return null
   } catch (error) {
     console.error('Error fetching services data:', error)
+    return null
+  }
+}
+
+// Get Articles component data
+export async function getArticles(
+  page: string
+): Promise<ArticleProps[] | null> {
+  try {
+    const data = await client.fetch<Page[]>(
+      `*[_type == "page" && title.current == "${page}"]`
+    )
+
+    if (data.length > 0) {
+      const articlesData = data[0].components?.filter(
+        (component): component is { _key: string } & Article =>
+          component._type === 'article'
+      )
+      if (articlesData && articlesData.length > 0) {
+        // console.log('articlesData', articlesData)
+        return Object(articlesData)
+      }
+    }
+
+    return null
+  } catch (error) {
+    console.error('Error fetching articles data:', error)
     return null
   }
 }
