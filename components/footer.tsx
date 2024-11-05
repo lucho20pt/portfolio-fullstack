@@ -20,11 +20,13 @@ export const Footer = () => {
     }
   }
   return (
-    <footer className='py-5'>
+    <footer className="py-5">
       <div className="container flex flex-col text-slate-400 text-sm">
         {/* top */}
-        <div className="flex flex-row items-start justify-between py-5
-        border-t border-b border-secondary">
+        <div
+          className="flex flex-row items-start justify-between py-5
+        border-t border-b border-secondary"
+        >
           {/* logo  */}
           <Link href="/" className="hover:text-slate-100 self-center">
             <Image
@@ -88,8 +90,9 @@ export const Footer = () => {
 
         {/* bottom */}
         <div className="flex flex-row items-center justify-between py-5">
-          <p className="text-center text-slate-400 text-xs">
-            @Copyright 2024 Daniel Batista. All rights reserved.
+          <p className="text-left text-slate-400 text-xs">
+            @Copyright 2024 Daniel Batista.{' '}
+            <span className="block sm:inline">All rights reserved.</span>
           </p>
 
           <ul
