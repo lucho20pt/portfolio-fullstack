@@ -30,6 +30,7 @@ export const Header = () => {
                 className="w-full h-auto max-w-[30px] md:max-w-[70px]"
               />
             </Link>
+            <span className='hidden'>Daniel Batista</span>
           </h1>
           <FloatingNav navItems={navItems} />
         </BackgroundBeamsWithCollision>
