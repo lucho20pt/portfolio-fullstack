@@ -16,14 +16,14 @@ export const metadata: Metadata = {
 export default async function About() {
   const heroData: HeroProps | null = await getHero(page) // allow for null
   const articleData: ArticleProps[] | null = await getArticles(page)
-  console.log('articleData', articleData)
+  // console.log('articleData', articleData)
 
   return (
     <>
       {heroData ? <Hero heroData={heroData} /> : <p>{'loading...'}</p>}
 
       <div className="container flex flex-col items-center mx-auto gap-28 max-w-full">
-        <section id="about">
+        <section id="about" className='flex flex-col gap-28'>
           {articleData && articleData.length > 0 ? (
             articleData.map((article) => (
               <Article key={article._key} {...article} />
