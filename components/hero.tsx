@@ -54,7 +54,7 @@ export const Hero = ({
         ))}
         {description &&
           description.map((descriptionItem, index) => (
-            <h2 key={index} className="text-xl sm:text-2xl max-w-2xl">
+            <p key={index} className="text-xl sm:text-2xl max-w-2xl">
               {descriptionItem.children.map((child, childIndex) => (
                 <span
                   key={childIndex}
@@ -65,7 +65,7 @@ export const Hero = ({
                   {child.text}
                 </span>
               ))}
-            </h2>
+            </p>
           ))}
 
         {button && (
