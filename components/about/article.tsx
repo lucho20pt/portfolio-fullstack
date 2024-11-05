@@ -31,17 +31,18 @@ export const Article = ({ _key, title, description }: ArticleProps) => {
 
   return (
     <article key={_key}
-      className={`${inter.className} antialiased gap-4
+      className={`${inter.className} antialiased gap-5
       flex flex-col font-normal max-w-4xl`}
     >
-      <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4">{title}</h2>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left mb-6 pr-[10%]">{title}</h2>
+      
       {paragraphs && (
         <PortableText
           value={paragraphs}
           components={{
             block: {
               normal: ({ children }) => (
-                <p className="sm:text-lg font-light">{children}</p>
+                <p className="text-lg font-light">{children}</p>
               ),
             },
             marks: {

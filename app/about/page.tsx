@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { getHero, getMetadata, getArticles } from '@/app/actions'
 import { Hero, HeroProps } from '@/components/hero'
 import { Article, ArticleProps } from '@/components/about'
+import { Comunications } from '@/components/comunications'
 
 export const revalidate = 60
 const page = 'About'
@@ -22,13 +23,16 @@ export default async function About() {
       {heroData ? <Hero heroData={heroData} /> : <p>{'loading...'}</p>}
 
       <div className="container flex flex-col items-center mx-auto gap-28 max-w-full">
-        {articleData && articleData.length > 0 ? (
-          articleData.map((article) => (
-            <Article key={article._key} {...article} />
-          ))
-        ) : (
-          <p>{'loading...'}</p>
-        )}
+        <section id="about">
+          {articleData && articleData.length > 0 ? (
+            articleData.map((article) => (
+              <Article key={article._key} {...article} />
+            ))
+          ) : (
+            <p>{'loading...'}</p>
+          )}
+        </section>
+        <Comunications />
       </div>
     </>
   )
