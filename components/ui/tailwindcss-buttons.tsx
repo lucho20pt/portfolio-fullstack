@@ -8,11 +8,13 @@ export const ButtonPrimary = ({
   className,
   onClick,
   href,
+  type,
 }: {
   children: React.ReactNode
   className?: string
   onClick?: () => void
   href?: string
+  type?: 'reset' | 'button' | 'submit'
 }) => {
   const router = useRouter()
   const handleClick = () => {
@@ -29,6 +31,7 @@ export const ButtonPrimary = ({
         className
       )}
       onClick={handleClick}
+      type={type}
     >
       {children}
     </button>
