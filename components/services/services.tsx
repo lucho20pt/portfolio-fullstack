@@ -40,26 +40,32 @@ export const Services = ({
           {service.map((item, index) => (
             <li
               key={index}
-              className={`flex flex-col w-full items-center justify-center py-1 px-6 lg:p-6 
-              max-w-[320px]
-              rounded-xl sm:border-2 border-secondary/80 ${inter.className}`}
+              className={`flex flex-col w-full items-center justify-center 
+              max-w-[320px] relative
+              rounded-3xl sm:border-2 border-secondary/80 ${inter.className}`}
             >
-              <h3
-                className={`flex items-end  sm:min-h-24 md:min-h-28 text-xl lg:text-2xl uppercase`}
-              >
-                {item.title}
-              </h3>
+              <div className="overflow-hidden py-1 px-6 lg:p-6 sm:bg-background">
+                <h3
+                  className={`flex items-end sm:min-h-24 md:min-h-28 text-xl lg:text-2xl uppercase`}
+                >
+                  {item.title}
+                </h3>
 
-              <hr className="flex w-full my-4 border-secondary/90" />
+                <hr className="flex w-full my-4 border-secondary/90" />
 
-              <p className="flex items-start sm:min-h-24 md:min-h-28 text-sm lg:text-lg font-extralight">
-                {item.description}
-              </p>
+                <p className="flex items-start sm:min-h-24 md:min-h-28 text-sm lg:text-lg font-extralight">
+                  {item.description}
+                </p>
+              </div>
             </li>
           ))}
         </ul>
       )}
-      <ButtonPrimary className="text-xl" href="/contact" aria-label="Contact Me">
+      <ButtonPrimary
+        className="text-xl"
+        href="/contact"
+        aria-label="Contact"
+      >
         Contact Me
       </ButtonPrimary>
     </section>
