@@ -13,6 +13,7 @@ import { HeroProps } from '@/components/hero'
 import { TechSkillsProps } from '@/components/tech-skills'
 import { ServicesProps } from '@/components/services'
 import { ArticleProps } from '@/components/about/article'
+import nodemailer from 'nodemailer'
 
 // PageProps interface
 export type PageProps = Page
@@ -60,7 +61,7 @@ export async function getHero(page: string): Promise<HeroProps | null> {
         // console.log(heroComponent)
         return Object(heroComponent)
       }
-    } 
+    }
 
     return null
   } catch (error) {
@@ -143,5 +144,34 @@ export async function getArticles(
   } catch (error) {
     console.error('Error fetching articles data:', error)
     return null
+  }
+}
+
+// Send CONTACT form data
+export async function sendEmail(name: string, email: string, message: string) {
+  // Configure your SMTP transporter
+  const transporter = nodemailer.createTransport({
+    host: process.env.CONTACT_SMTP_SERVER,
+    port: Number(process.env.CONTACT_SMTP_PORT),
+    auth: {
+      user: process.env.CONTACT_SMTP_EMAIL,
+      pass: process.env.CONTACT_SMTP_PASSWORD,
+    },
+  })
+  console.log('transporter', transporter)
+
+  try {
+    // Send email
+    await transporter.sendMail({
+      from: email,
+      to: process.env.CONTACT_SMTP_EMAIL,
+      subject: `Porfolio - contact from ${name}`,
+      text: message,
+    })
+
+    return { success: true, message: 'Email sent successfully' }
+  } catch (error) {
+    console.error(error)
+    return { success: false, message: 'Error sending email' }
   }
 }
