@@ -31,10 +31,10 @@ export const Article = ({ _key, title, description }: ArticleProps) => {
 
   return (
     <article key={_key}
-      className={`${inter.className} antialiased gap-5
+      className={`${inter.className} antialiased gap-5 border-l border-secondary px-8
       flex flex-col font-normal max-w-4xl`}
     >
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left mb-6 pr-[10%]">{title}</h2>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left mb-6 pr-[10%] sm:text-center">{title}</h2>
       
       {paragraphs && (
         <PortableText
