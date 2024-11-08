@@ -21,7 +21,7 @@ export const ContactForm = () => {
 
     try {
       const response = await sendEmail(name, email, message)
-      console.log('response', response)
+      // console.log('response', response)
 
       if (response.success) {
         setSuccess('Thank you! Your message has been sent.')

@@ -158,14 +158,15 @@ export async function sendEmail(name: string, email: string, message: string) {
       pass: process.env.CONTACT_SMTP_PASSWORD,
     },
   })
-  console.log('transporter', transporter)
+  // console.log('transporter', transporter)
 
   try {
     // Send email
     await transporter.sendMail({
-      from: email,
-      to: process.env.CONTACT_SMTP_EMAIL,
-      subject: `Porfolio - contact from ${name}`,
+      from: process.env.CONTACT_SMTP_EMAIL, // Use the sender email
+      replyTo: email, // Add the reply-to address
+      to: process.env.CONTACT_SMTP_EMAIL, // Receiving email
+      subject: `DB message from ${name}`,
       text: message,
     })
 
