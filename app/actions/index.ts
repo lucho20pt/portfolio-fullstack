@@ -148,7 +148,13 @@ export async function getArticles(
 }
 
 // Send CONTACT form data
-export async function sendEmail(name: string, email: string, message: string) {
+export async function sendEmail(
+  subject: string,
+  name: string,
+  email: string,
+  message: string,
+  consent: boolean
+) {
   // Configure your SMTP transporter
   const transporter = nodemailer.createTransport({
     host: process.env.CONTACT_SMTP_SERVER,
@@ -166,8 +172,8 @@ export async function sendEmail(name: string, email: string, message: string) {
       from: process.env.CONTACT_SMTP_EMAIL, // Use the sender email
       replyTo: email, // Add the reply-to address
       to: process.env.CONTACT_SMTP_EMAIL, // Receiving email
-      subject: `DB message from ${name}`,
-      text: message,
+      subject: `${subject} from ${name}`,
+      text: `Message: ${message}\n\nConsent: ${consent ? 'Yes' : 'No'}`,
     })
 
     return { success: true, message: 'Email sent successfully' }
