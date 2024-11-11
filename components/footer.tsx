@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaLinkedin, FaLink } from 'react-icons/fa6'
+import { Notification } from '@/components/notification'
 
 export const Footer = () => {
   const [showNotification, setShowNotification] = useState(false)
@@ -108,27 +109,7 @@ export const Footer = () => {
           </ul>
         </div>
       </div>
-
-      {/* Notification */}
-      {showNotification && (
-        <div
-          style={{
-            position: 'fixed',
-            bottom: '20px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            backgroundColor: '#333',
-            color: '#fff',
-            padding: '10px 20px',
-            borderRadius: '4px',
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-            zIndex: 1000,
-            transition: 'opacity 0.3s ease-in-out',
-          }}
-        >
-          Copied to the clipboard!
-        </div>
-      )}
+      {showNotification && <Notification message="Copied to the clipboard!" />}
     </footer>
   )
 }
