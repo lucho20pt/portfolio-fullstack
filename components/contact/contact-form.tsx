@@ -10,57 +10,86 @@ import {
 import { Notification } from '@/components/notification'
 
 export const ContactForm = () => {
-  const [subject, setSubject] = useState('')
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-  const [error, setError] = useState('')
-  const [success, setSuccess] = useState('')
-  const [showNotification, setShowNotification] = useState(false)
-  const [notificationType, setNotificationType] = useState<
-    'success' | 'error'
-  >()
-  const [consent, setConsent] = useState(false)
+  // set form data
+  const [formData, setFormData] = useState({
+    subject: '',
+    name: '',
+    email: '',
+    message: '',
+    consent: false,
+  })
 
+  // set error messages
+  const [notification, setNotification] = useState({
+    show: false,
+    message: '',
+    type: 'success' as 'success' | 'error' | undefined,
+  })
+
+  //  handle form change
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value, type, checked } = e.target as
+      | HTMLInputElement
+      | (HTMLTextAreaElement & { checked: boolean })
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value,
+    })
+  }
+
+  // handle form submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    const { subject, name, email, message, consent } = formData
+
     if (!subject || !name || !email || !message || !consent) {
-      setError('Please fill out all fields and agree to the consent.')
-      setNotificationType('error')
-      setShowNotification(true)
-      setTimeout(() => setShowNotification(false), 3000)
+      setNotification({
+        show: true,
+        message: 'Please fill out all fields and agree to the consent.',
+        type: 'error',
+      })
+      setTimeout(() => setNotification({ ...notification, show: false }), 3000)
       return
     }
-    setError('') // Clear previous error message
 
     try {
       const response = await sendEmail(subject, name, email, message, consent)
-      // console.log('response', response)
 
       if (response.success) {
-        setSuccess('Thank you! Your message has been sent.')
-        setSubject('')
-        setName('')
-        setEmail('')
-        setMessage('')
-        setConsent(false)
-        setNotificationType('success')
-        setShowNotification(true)
-        setTimeout(() => setShowNotification(false), 3000)
+        setFormData({
+          subject: '',
+          name: '',
+          email: '',
+          message: '',
+          consent: false,
+        })
+        setNotification({
+          show: true,
+          message: 'Thank you! Your message has been sent.',
+          type: 'success',
+        })
       } else {
-        setError(response.message)
-        setNotificationType('error')
-        setShowNotification(true)
-        setTimeout(() => setShowNotification(false), 3000)
+        setNotification({
+          show: true,
+          message: response.message,
+          type: 'error',
+        })
       }
     } catch (error) {
-      setError('Error sending message. Please try again later.')
-      setNotificationType('error')
-      setShowNotification(true)
-      setTimeout(() => setShowNotification(false), 3000)
+      setNotification({
+        show: true,
+        message: 'Error sending message. Please try again later.',
+        type: 'error',
+      })
       return error
     }
+
+    setTimeout(() => setNotification({ ...notification, show: false }), 3000)
   }
+
+  const { subject, name, email, message, consent } = formData
 
   return (
     <section className="flex flex-col w-full p-4">
@@ -77,7 +106,7 @@ export const ContactForm = () => {
           name="subject"
           type="text"
           value={subject}
-          onChange={(e) => setSubject(e.target.value)}
+          onChange={handleChange}
         />
         <FormFieldText
           label="Name*"
@@ -85,7 +114,7 @@ export const ContactForm = () => {
           name="name"
           type="text"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={handleChange}
         />
         <FormFieldText
           label="Email*"
@@ -93,16 +122,15 @@ export const ContactForm = () => {
           name="email"
           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleChange}
         />
         <FormFieldTextArea
           label="Message*"
           id="message"
           name="message"
-          type="text"
           rows={3}
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={handleChange}
         />
         <div className="mb-4 flex items-center">
           <input
@@ -110,7 +138,7 @@ export const ContactForm = () => {
             id="consent"
             name="consent"
             checked={consent}
-            onChange={(e) => setConsent(e.target.checked)}
+            onChange={handleChange}
             className="cursor-pointer"
           />
           <label
@@ -129,8 +157,8 @@ export const ContactForm = () => {
           </ButtonPrimary>
         </div>
       </form>
-      {showNotification && (
-        <Notification message={error || success} type={notificationType} />
+      {notification.show && (
+        <Notification message={notification.message} type={notification.type} />
       )}
     </section>
   )
