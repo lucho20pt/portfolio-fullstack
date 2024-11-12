@@ -44,7 +44,7 @@ export const Hero = ({
               <span
                 key={childIndex}
                 className={
-                  child.marks?.includes('strong') ? 'text-secondary' : ''
+                  child.marks?.includes('strong') ? 'text-secondary' : undefined
                 }
               >
                 {child.text}
@@ -59,7 +59,9 @@ export const Hero = ({
                 <span
                   key={childIndex}
                   className={
-                    child.marks?.includes('strong') ? 'text-secondary' : ''
+                    child.marks?.includes('strong')
+                      ? 'text-secondary'
+                      : undefined
                   }
                 >
                   {child.text}
