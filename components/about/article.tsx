@@ -42,28 +42,30 @@ export const Article = ({ _key, title, description }: ArticleProps) => {
   return (
     <article
       key={_key}
-      className={`${inter.className} antialiased gap-5 border-l border-secondary p-8
+      className={`${inter.className} antialiased gap-5 
       flex flex-col font-normal max-w-4xl`}
     >
       <HeadingPrimary>{title}</HeadingPrimary>
 
-      {paragraphs && (
-        <PortableText
-          value={paragraphs}
-          components={{
-            block: {
-              normal: ({ children }) => (
-                <p className="text-lg font-light">{children}</p>
-              ),
-            },
-            marks: {
-              strong: ({ children }) => (
-                <strong className="text-secondary">{children}</strong>
-              ),
-            },
-          }}
-        />
-      )}
+      <div className=' gap-5 flex flex-col'>
+        {paragraphs && (
+          <PortableText
+            value={paragraphs}
+            components={{
+              block: {
+                normal: ({ children }) => (
+                  <p className="border-l border-secondary pl-5 text-lg font-light">{children}</p>
+                ),
+              },
+              marks: {
+                strong: ({ children }) => (
+                  <strong className="text-secondary">{children}</strong>
+                ),
+              },
+            }}
+          />
+        )}
+      </div>
     </article>
   )
 }
