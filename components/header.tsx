@@ -15,7 +15,7 @@ export const Header = () => {
     <header
       className="flex h-28 md:h-36 lg:h-44 mb-5
       shadow-secondary shadow-[0px_4px_5px_0px] 
-      bg-gradient-to-b from-transparent to-transparent dark:from-secondary/50 dark:to-transparent"
+      bg-gradient-to-b from-transparent to-transparent dark:from-secondary/70 dark:to-transparent"
     >
       <GridDotBackground className="dark:bg-grid-white/[0.05] bg-grid-black/[0.10]">
         <BackgroundBeamsWithCollision className="items-center justify-between container h-full">
