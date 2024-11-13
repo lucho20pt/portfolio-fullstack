@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { getHero, getMetadata } from '@/app/actions'
 import { Hero, HeroProps } from '@/components/hero'
+import { ProjectsList } from '@/components/projects'
 
 export const revalidate = 60
 const page = 'Projects'
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   description: metaData?.description,
 }
 
-export default async function Contact() {
+export default async function Projects() {
   const heroData: HeroProps | null = await getHero(page)
 
   return (
@@ -19,12 +20,8 @@ export default async function Contact() {
       {heroData ? <Hero heroData={heroData} /> : <p>{'loading...'}</p>}
 
       <div className="container flex flex-col items-center mx-auto gap-28">
-        <section id="projects" className="flex flex-col gap-28 w-full max-w-3xl">
-          <ul>
-            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, explicabo.</li>
-            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
-            <li>Lorem ipsum dolor sit. Animi, explicabo.</li>
-          </ul>
+        <section id="projects" className="flex flex-col gap-28 w-full max-w-7xl">
+          <ProjectsList />
         </section>
       </div>
     </>
