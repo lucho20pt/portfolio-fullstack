@@ -31,8 +31,8 @@ export const Hero = ({
   return (
     <GridDotBackground className="dark:bg-grid-white/[0.15] bg-grid-black/[0.15]">
       <section
-        className={`${inter.className} antialiased py-20 container max-w-5xl
-        flex flex-col items-center text-center gap-6`}
+        className={`${inter.className} antialiased h-[80vh] md:h-[60vh] container max-w-5xl
+        flex flex-col items-center justify-center text-center gap-6`}
       >
         <p className="text-xs md:text-sm font-extralight uppercase">{intro}</p>
         {heading.map((headingItem, index) => (
