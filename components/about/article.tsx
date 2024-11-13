@@ -1,6 +1,7 @@
 import React from 'react'
 import { Inter } from 'next/font/google'
 import { PortableText } from '@portabletext/react'
+import { HeadingPrimary } from '@/components/ui/headings'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,26 +17,36 @@ export type ArticleProps = {
 }
 
 export const Article = ({ _key, title, description }: ArticleProps) => {
-  const paragraphs = description ? description.map(block => {
-    if (block.children.length === 1 && block.children[0].text.includes('\n\n')) {
-      const splitText = block.children[0].text.split('\n\n').map((text, index) => ({
-        _type: 'block',
-        _key: `${block._key}-${index}`,
-        children: [{ _type: 'span', text }],
-        style: block.style,
-      }))
-      return splitText
-    }
-    return [block]
-  }).flat() : []
+  const paragraphs = description
+    ? description
+        .map((block) => {
+          if (
+            block.children.length === 1 &&
+            block.children[0].text.includes('\n\n')
+          ) {
+            const splitText = block.children[0].text
+              .split('\n\n')
+              .map((text, index) => ({
+                _type: 'block',
+                _key: `${block._key}-${index}`,
+                children: [{ _type: 'span', text }],
+                style: block.style,
+              }))
+            return splitText
+          }
+          return [block]
+        })
+        .flat()
+    : []
 
   return (
-    <article key={_key}
-      className={`${inter.className} antialiased gap-5 border-l border-secondary px-8
+    <article
+      key={_key}
+      className={`${inter.className} antialiased gap-5 border-l border-secondary p-8
       flex flex-col font-normal max-w-4xl`}
     >
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left mb-6 pr-[10%] sm:text-center">{title}</h2>
-      
+      <HeadingPrimary>{title}</HeadingPrimary>
+
       {paragraphs && (
         <PortableText
           value={paragraphs}

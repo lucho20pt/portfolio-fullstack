@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { AnimatedTooltip, Item } from '@/components/ui/animated-tooltip'
+import { HeadingPrimary } from '@/components/ui/headings'
 
 export type TechSkillsProps = {
   _key: string
@@ -27,9 +28,8 @@ export const TechSkills = ({
       className="flex flex-col items-center justify-center max-w-5xl"
     >
       <header>
-        <h2 className="text-xl md:text-3xl font-extralight uppercase md:px-10 mb-5 text-slate-400 text-center">
-          {intro}
-        </h2>
+        <HeadingPrimary>{intro}</HeadingPrimary>
+
         {subintro && (
           <p className="text-sm md:text-sm font-normal md:px-10 mb-10 text-slate-400 text-center">
             {subintro}

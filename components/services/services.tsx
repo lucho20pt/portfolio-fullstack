@@ -2,6 +2,7 @@ import React from 'react'
 import { Inter } from 'next/font/google'
 import { ButtonPrimary } from '@/components/ui/tailwindcss-buttons'
 const inter = Inter({ subsets: ['latin'] })
+import { HeadingPrimary } from '@/components/ui/headings'
 
 export type Service = {
   title: string
@@ -29,11 +30,7 @@ export const Services = ({
       id="services"
       className="container flex flex-col items-center justify-center text-center gap-10"
     >
-      <header>
-        <h2 className="text-xl md:text-3xl font-extralight uppercase md:px-10 text-slate-400 max-w-3xl">
-          {intro}
-        </h2>
-      </header>
+      <HeadingPrimary>{intro}</HeadingPrimary>
 
       {service && (
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-10">
@@ -61,11 +58,7 @@ export const Services = ({
           ))}
         </ul>
       )}
-      <ButtonPrimary
-        className="text-xl"
-        href="/contact"
-        aria-label="Contact"
-      >
+      <ButtonPrimary className="text-xl" href="/contact" aria-label="Contact">
         Contact Me
       </ButtonPrimary>
     </section>

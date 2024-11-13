@@ -1,14 +1,15 @@
 import React from 'react'
 import { MyGlobe } from '@/components/comunications/myglobe'
 import { ButtonPrimary } from '@/components/ui/tailwindcss-buttons'
+import { HeadingPrimary } from '@/components/ui/headings'
 
 export const Comunications = () => {
   return (
     <section className="flex flex-col items-center justify-center text-center">
       <header className="container">
-        <h2 className="text-xl md:text-3xl font-extralight uppercase md:px-10 text-slate-400 max-w-3xl">
+        <HeadingPrimary>
           I’m very flexible with time zone communications
-        </h2>
+        </HeadingPrimary>
       </header>
       <div
         className="overflow-hidden flex flex-row items-start justify-center mb-12
@@ -16,7 +17,11 @@ export const Comunications = () => {
       >
         <MyGlobe className="w-[400px] h-[400px]" />
       </div>
-      <ButtonPrimary className="text-xl" href="/contact" aria-label="Send Me a Message">
+      <ButtonPrimary
+        className="text-xl"
+        href="/contact"
+        aria-label="Send Me a Message"
+      >
         Send Me a Message
       </ButtonPrimary>
     </section>

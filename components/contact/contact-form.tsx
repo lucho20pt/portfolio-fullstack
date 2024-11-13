@@ -8,6 +8,7 @@ import {
   FormFieldTextArea,
 } from '@/components/contact/form-field'
 import { Notification } from '@/components/notification'
+import { HeadingPrimary } from '@/components/ui/headings'
 
 export const ContactForm = () => {
   // set form data
@@ -93,11 +94,8 @@ export const ContactForm = () => {
 
   return (
     <section className="flex flex-col w-full p-4">
-      <header>
-        <h2 className="text-xl md:text-3xl font-extralight uppercase mb-10 text-slate-400 max-w-3xl text-center">
-          Contact Me
-        </h2>
-      </header>
+
+      <HeadingPrimary>Contact Me</HeadingPrimary>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-12">
         <FormFieldText
@@ -132,6 +130,7 @@ export const ContactForm = () => {
           value={message}
           onChange={handleChange}
         />
+
         <div className="mb-4 flex items-center">
           <input
             type="checkbox"
@@ -148,6 +147,7 @@ export const ContactForm = () => {
             I consent that I have read the terms & privacy policy.
           </label>
         </div>
+        
         <div className="text-center">
           <ButtonPrimary
             type="submit"
