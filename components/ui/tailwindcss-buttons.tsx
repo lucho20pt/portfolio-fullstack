@@ -37,3 +37,39 @@ export const ButtonPrimary = ({
     </button>
   )
 }
+export const ButtonSecondary = ({
+  children,
+  className,
+  onClick,
+  href,
+  type,
+}: {
+  children: React.ReactNode
+  className?: string
+  onClick?: () => void
+  href?: string
+  type?: 'reset' | 'button' | 'submit'
+}) => {
+  const router = useRouter()
+  const handleClick = () => {
+    if (href) {
+      router.push(href)
+    } else if (onClick) {
+      onClick()
+    }
+  }
+  return (
+    <button
+      className={cn(
+        'inline-flex items-center justify-center rounded-md px-4 py-2 '+
+        'border border-secondary ',
+        className
+      )}
+      onClick={handleClick}
+      type={type}
+    >
+      {children}
+    </button>
+  )
+}
+
