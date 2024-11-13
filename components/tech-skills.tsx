@@ -28,7 +28,7 @@ export const TechSkills = ({
       className="flex flex-col items-center justify-center max-w-5xl"
     >
       <header>
-        <HeadingPrimary>{intro}</HeadingPrimary>
+        <HeadingPrimary className='pb-5'>{intro}</HeadingPrimary>
 
         {subintro && (
           <p className="text-sm md:text-sm font-normal md:px-10 mb-10 text-slate-400 text-center">
