@@ -68,12 +68,58 @@ export type Geopoint = {
   alt?: number
 }
 
+export type Project = {
+  _type: 'project'
+  title?: string
+  brandImage?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  shortDescription?: string
+  description?: Array<{
+    children?: Array<{
+      marks?: Array<string>
+      text?: string
+      _type: 'span'
+      _key: string
+    }>
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+    listItem?: 'bullet' | 'number'
+    markDefs?: Array<{
+      href?: string
+      _type: 'link'
+      _key: string
+    }>
+    level?: number
+    _type: 'block'
+    _key: string
+  }>
+  tech?: Array<
+    {
+      _key: string
+    } & TechSkill
+  >
+}
+
+export type ProjectsList = {
+  _type: 'projectsList'
+  intro?: string
+  project?: Array<
+    {
+      _key: string
+    } & Project
+  >
+}
+
 export type Article = {
-  _id: string
   _type: 'article'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
   title?: string
   description?: Array<{
     children?: Array<{
@@ -212,29 +258,12 @@ export type Page = {
     | ({
         _key: string
       } & Services)
-    | {
-        title?: string
-        description?: Array<{
-          children?: Array<{
-            marks?: Array<string>
-            text?: string
-            _type: 'span'
-            _key: string
-          }>
-          style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-          listItem?: 'bullet' | 'number'
-          markDefs?: Array<{
-            href?: string
-            _type: 'link'
-            _key: string
-          }>
-          level?: number
-          _type: 'block'
-          _key: string
-        }>
-        _type: 'article'
+    | ({
         _key: string
-      }
+      } & Article)
+    | ({
+        _key: string
+      } & ProjectsList)
   >
   metadata?: {
     title?: string
@@ -311,6 +340,8 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | Project
+  | ProjectsList
   | Article
   | Service
   | Services
