@@ -23,6 +23,7 @@ export const page = {
         {type: 'techSkillList'},
         {type: 'services'},
         {type: 'article'},
+        {type: 'projectsList'},
         // Add more component types as needed
       ],
     },
