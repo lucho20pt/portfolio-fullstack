@@ -9,18 +9,18 @@ export const Project = () => {
       rounded-md bg-secondary/5 hover:bg-secondary/10 text-white [&>*]:w-full"
     >
       <header
-        className="flex flex-row items-center justify-between h-20 p-4 rounded-md gap-5
+        className="flex flex-row items-center justify-between h-20 p-4 rounded-md gap-4
       bg-secondary/10 
       border-t border-secondary/50"
       >
-        <h3 className="lg:text-lg font-bold text-slate-400">Quinta dos Carvalhais</h3>
-        <span className="">
+        <h3 className="lg:text-lg font-bold text-slate-400 text-left">Quinta dos Carvalhais</h3>
+        <span className="text-left">
           <Image
             title="logo"
             height={30}
             width={30}
             alt="logo"
-            className="object-cover !m-0 !p-0 object-top relative transition duration-500 w-28 lg:w-32"
+            className="object-cover !m-0 !p-0 object-top relative transition duration-500 w-32"
             src="/logo-quinta-white.svg"
             // src={urlFor(item.image).width(200).url()}
           />
