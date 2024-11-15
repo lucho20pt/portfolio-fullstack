@@ -1,19 +1,20 @@
-// actions.ts
 'use server'
 
 import { client } from '@/app/utils/client'
+import nodemailer from 'nodemailer'
 import type {
   Hero,
   Page,
   TechSkillList,
   Services,
   Article,
+  ProjectsList,
 } from '@/sanity.types'
 import { HeroProps } from '@/components/hero'
 import { TechSkillsProps } from '@/components/tech-skills'
 import { ServicesProps } from '@/components/services'
-import { ArticleProps } from '@/components/about/article'
-import nodemailer from 'nodemailer'
+import { ArticleProps } from '@/components/about'
+import { ProjectListProps } from '@/components/projects'
 
 // PageProps interface
 export type PageProps = Page
@@ -180,5 +181,32 @@ export async function sendEmail(
   } catch (error) {
     console.error(error)
     return { success: false, message: 'Error sending email' }
+  }
+}
+
+// Get ProjectsList component data
+export async function getProjectsList(
+  page: string
+): Promise<ProjectListProps | null> {
+  try {
+    const data = await client.fetch<Page[]>(
+      `*[_type == "page" && title.current == "${page}"]`
+    )
+
+    if (data.length > 0) {
+      const projectsData = data[0].components?.find(
+        (component): component is { _key: string } & ProjectsList =>
+          component._type === 'projectsList'
+      )
+
+      if (projectsData) {
+        return Object(projectsData)
+      }
+    }
+
+    return null
+  } catch (error) {
+    console.error('Error fetching projects data:', error)
+    return null
   }
 }
