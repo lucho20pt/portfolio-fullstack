@@ -1,17 +1,18 @@
 import React from 'react'
 import Image from 'next/image'
-import { ButtonSecondary } from '@/components/ui/tailwindcss-buttons'
 
 export const ProjectCard = ({
   className,
   title,
-  description,
+  // description,
   imageLink,
+  children,
 }: {
   className?: string
   title: string
-  description: string
+  // description: string
   imageLink: string
+  children: React.ReactNode
 }) => {
   return (
     <article
@@ -24,49 +25,23 @@ export const ProjectCard = ({
         <span className="text-left">
           <Image
             title="logo"
-            height={30}
-            width={30}
+            height={50}
+            width={50}
             alt="logo"
-            className="object-cover !m-0 !p-0 object-top relative transition duration-500 w-32"
+            className="object-cover !m-0 !p-0 object-top relative transition duration-500 h-8"
             src={imageLink}
           />
         </span>
       </header>
 
-      <div className="bg-secondary/5 p-4 rounded-md text-left border-t border-secondary/50 text-slate-300">
+      {/* <div className="bg-secondary/5 p-4 rounded-md text-left border-t border-secondary/50 text-slate-300">
         <p>{description}</p>
-      </div>
+      </div> */}
+
+      {children}
 
       <footer className="flex flex-row items-center justify-between px-4 gap-5">
-        <ul className="flex flex-row items-center gap-3">
-          <li>
-            <Image
-              title="html5"
-              height={5}
-              width={5}
-              alt="html5"
-              className="object-cover !m-0 !p-0 object-top relative transition duration-500"
-              src="/html5.webp"
-            />
-          </li>
-          <li>
-            <Image
-              title="html5"
-              height={5}
-              width={5}
-              alt="html5"
-              className="object-cover !m-0 !p-0 object-top relative transition duration-500"
-              src="/html5.webp"
-            />
-          </li>
-        </ul>
-        <ButtonSecondary
-          className="text-sm text-secondary hover:text-white hover:bg-indigo-500/50"
-          href="/"
-          aria-label="title"
-        >
-          View More
-        </ButtonSecondary>
+        {/* Tech stack and View More button */}
       </footer>
     </article>
   )
