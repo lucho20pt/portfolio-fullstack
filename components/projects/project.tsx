@@ -52,7 +52,7 @@ export const Project = ({
           src={imageLink}
         />
       </CardHeader>
-      <CardContent className="h-32 overflow-hidden">
+      <CardContent className="min-h-32 overflow-hidden">
         {description.map((block) =>
           block.children.map((child) => (
             <CardDescription key={child._key}>{child.text}</CardDescription>
