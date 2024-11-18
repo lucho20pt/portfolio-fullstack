@@ -17,9 +17,7 @@ export const ProjectsList = ({
 }: {
   projectsData: ProjectListProps
 }) => {
-  console.log(projectsData)
   const { intro, project } = projectsData
-  // console.log(intro);
   return (
     <section
       id="projects"
@@ -29,7 +27,15 @@ export const ProjectsList = ({
 
       <div className="flex flex-row flex-wrap items-center justify-center gap-8 md:gap-10 w-full">
         {project && project.length > 0 ? (
-          project.map((project) => <Project key={project._key} {...project} />)
+          project.map((project) => (
+            <Project
+              key={project._key}
+              title={project.title}
+              description={project.description}
+              tech={project.tech}
+              imageLink={`/html5.webp`}
+            />
+          ))
         ) : (
           <p>{project ? 'No projects found' : 'loading...'}</p>
         )}

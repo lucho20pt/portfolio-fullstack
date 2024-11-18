@@ -1,11 +1,19 @@
-import React from 'react'
+import * as React from 'react'
 import Image from 'next/image'
-import { ProjectCard } from '@/components/projects/project-card'
+import { cn } from '@/lib/utils'
 import { ButtonSecondary } from '@/components/ui/tailwindcss-buttons'
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+  CardFooter,
+} from '@/components/card'
 
 export type ProjectProps = {
+  className?: string
   title: string
-  // shortDescription: string
   description: Array<{
     _key: string
     children: Array<{
@@ -13,6 +21,7 @@ export type ProjectProps = {
       text: string
     }>
   }>
+  imageLink: string
   tech: Array<{
     skill: string
     image: {
@@ -21,34 +30,36 @@ export type ProjectProps = {
       }
     }
   }>
-  brandImage: {
-    asset: {
-      _ref: string
-    }
-  }
 }
 
 export const Project = ({
+  className,
   title,
-  // shortDescription,
   description,
+  imageLink,
   tech,
-  // brandImage,
 }: ProjectProps) => {
   return (
-    <ProjectCard
-      title={title}
-      // description={shortDescription}
-      // imageLink={`/path/to/images/${brandImage.asset._ref}`}
-      imageLink={`/html5.webp`}
-    >
-      <div className="bg-secondary/5 p-4 rounded-md text-left border-t border-secondary/50 text-slate-300">
+    <Card className={cn(className)}>
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+        <Image
+          title="logo"
+          height={30}
+          width={30}
+          alt="logo"
+          className="object-cover !m-0 !p-0 object-top relative transition duration-500"
+          src={imageLink}
+        />
+      </CardHeader>
+      <CardContent className="h-32 overflow-hidden">
         {description.map((block) =>
-          block.children.map((child) => <p key={child._key}>{child.text}</p>)
+          block.children.map((child) => (
+            <CardDescription key={child._key}>{child.text}</CardDescription>
+          ))
         )}
-      </div>
-
-      <footer className="flex flex-row items-center justify-between px-4 gap-5">
+      </CardContent>
+      <CardFooter>
         <ul className="flex flex-row items-center gap-3">
           {tech.map((techItem) => (
             <li key={techItem.skill}>
@@ -58,8 +69,7 @@ export const Project = ({
                 width={10}
                 alt={techItem.skill}
                 className="object-cover !m-0 !p-0 object-top relative transition duration-500"
-                // src={`/path/to/images/${techItem.image.asset._ref}`}
-                src={`/html5.webp`}
+                src={imageLink}
               />
             </li>
           ))}
@@ -71,7 +81,7 @@ export const Project = ({
         >
           View More
         </ButtonSecondary>
-      </footer>
-    </ProjectCard>
+      </CardFooter>
+    </Card>
   )
 }
