@@ -93,11 +93,14 @@ export const ContactForm = () => {
   const { subject, name, email, message, consent } = formData
 
   return (
-    <section className="flex flex-col w-full p-4">
-
+    <div className='w-full flex flex-col max-w-2xl px-4 gap-10'>
       <HeadingPrimary>Contact Me</HeadingPrimary>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-12">
+      <form
+        name="contact"
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-12"
+      >
         <FormFieldText
           label="Subject*"
           id="subject"
@@ -147,7 +150,7 @@ export const ContactForm = () => {
             I consent that I have read the terms & privacy policy.
           </label>
         </div>
-        
+
         <div className="text-center">
           <ButtonPrimary
             type="submit"
@@ -160,7 +163,7 @@ export const ContactForm = () => {
       {notification.show && (
         <Notification message={notification.message} type={notification.type} />
       )}
-    </section>
+    </div>
   )
 }
 

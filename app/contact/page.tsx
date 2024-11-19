@@ -19,11 +19,12 @@ export default async function Contact() {
     <>
       {heroData ? <Hero heroData={heroData} /> : <p>{'loading...'}</p>}
 
-      <div className="container flex flex-col items-center mx-auto gap-28">
-        <section id="contact" className="flex flex-col gap-28 w-full max-w-3xl">
-          <ContactForm />
-        </section>
-      </div>
+      <section
+        id="contact"
+        className="container flex flex-col items-center mx-auto gap-28"
+      >
+        <ContactForm />
+      </section>
     </>
   )
 }
