@@ -60,7 +60,7 @@ export const Project = ({
         )}
       </CardContent>
       <CardFooter>
-        <ul className="flex flex-row items-center gap-3">
+        <ul className="flex flex-row flex-wrap items-center gap-3 max-w-[50%] sm:max-w-full">
           {tech.map((techItem) => (
             <li key={techItem.skill}>
               <Image
