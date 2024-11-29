@@ -2,6 +2,7 @@ import * as React from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { ButtonSecondary } from '@/components/ui/tailwindcss-buttons'
+import { urlFor } from '@/app/utils/sanityImage'
 import {
   Card,
   CardHeader,
@@ -21,36 +22,43 @@ export type ProjectProps = {
       text: string
     }>
   }>
-  imageLink: string
+  brandImage?: {
+    asset?: {
+      _ref: string
+    }
+  }
   tech: Array<{
     skill: string
     image: {
-      asset: {
+      asset?: {
         _ref: string
       }
     }
   }>
+  imageLink?: string
 }
 
 export const Project = ({
   className,
   title,
   description,
-  imageLink,
   tech,
+  imageLink,
 }: ProjectProps) => {
   return (
     <Card className={cn(className)}>
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
-        <Image
-          title="logo"
-          height={30}
-          width={30}
-          alt="logo"
-          className="object-cover !m-0 !p-0 object-top relative transition duration-500"
-          src={imageLink}
-        />
+        <CardTitle className='sm:text-xl'>{title}</CardTitle>
+        {imageLink && (
+          <Image
+            title="logo"
+            height={75}
+            width={150}
+            alt="logo"
+            className="object-cover !m-0 !p-0 object-top relative transition duration-500 w-24 sm:w-28"
+            src={imageLink}
+          />
+        )}
       </CardHeader>
       <CardContent className="min-h-32 overflow-hidden">
         {description.map((block) =>
@@ -63,14 +71,16 @@ export const Project = ({
         <ul className="flex flex-row flex-wrap items-center gap-3 max-w-[50%] sm:max-w-full">
           {tech.map((techItem) => (
             <li key={techItem.skill}>
-              <Image
-                title={techItem.skill}
-                height={10}
-                width={10}
-                alt={techItem.skill}
-                className="object-cover !m-0 !p-0 object-top relative transition duration-500"
-                src={imageLink}
-              />
+              {techItem.image.asset && (
+                <Image
+                  title={techItem.skill}
+                  height={30}
+                  width={30}
+                  alt={techItem.skill}
+                  className="object-cover !m-0 !p-0 object-top relative transition duration-500 w-5"
+                  src={urlFor(techItem.image.asset._ref).width(30).url()}
+                />
+              )}
             </li>
           ))}
         </ul>
