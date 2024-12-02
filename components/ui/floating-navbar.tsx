@@ -23,9 +23,8 @@ export const FloatingNav = ({
   className?: string
 }) => {
   const pathname = usePathname()
-  console.log(pathname)
-  const { scrollYProgress } = useScroll()
 
+  const { scrollYProgress } = useScroll()
   const [visible, setVisible] = useState(true)
 
   useMotionValueEvent(scrollYProgress, 'change', (current) => {
