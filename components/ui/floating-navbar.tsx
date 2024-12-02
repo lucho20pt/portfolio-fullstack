@@ -9,6 +9,7 @@ import {
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { MdHome } from 'react-icons/md'
+import { usePathname } from 'next/navigation'
 
 export const FloatingNav = ({
   navItems,
@@ -21,6 +22,8 @@ export const FloatingNav = ({
   }[]
   className?: string
 }) => {
+  const pathname = usePathname()
+  console.log(pathname)
   const { scrollYProgress } = useScroll()
 
   const [visible, setVisible] = useState(true)
@@ -57,9 +60,10 @@ export const FloatingNav = ({
           duration: 0.5,
         }}
         className={cn(
-          `flex max-w-fit fixed inset-x-0 mx-auto top-[90px] sm:top-[70px] md:top-[94px] lg:top-[120px]
+          `flex max-w-fit fixed inset-x-0 mx-auto z-[5000] px-2 sm:px-4 py-2
+          top-[90px] sm:top-[70px] md:top-[94px] lg:top-[120px]
+          items-center justify-center space-x-3 sm:space-x-8
           rounded-sm border-t border-t-secondary
-           z-[5000] px-2 sm:px-4 py-2 items-center justify-center space-x-3 sm:space-x-6 md:space-x-8
           bg-gradient-to-b from-transparent to-transparent dark:from-black/30 dark:to-black/70`,
           className
         )}
@@ -70,7 +74,10 @@ export const FloatingNav = ({
             'relative items-center flex text-foreground dark:text-primary dark:hover:text-indigo-400 focus:text-secondary'
           )}
         >
-          <span className="text-xl sm:text-2xl md:text-3xl xl:text-4xl mr-2">
+          <span
+            className={`${pathname === `/` ? 'text-secondary' : ''} 
+            text-xl sm:text-2xl md:text-3xl xl:text-4xl mr-2`}
+          >
             <MdHome />
           </span>
           <strong className="hidden text-sm sm:text-sm md:text-lg lg:text-xl">
@@ -86,11 +93,14 @@ export const FloatingNav = ({
               key={`link=${idx}`}
               href={navItem.link}
               className={cn(
-                'relative items-center flex text-foreground dark:text-primary dark:hover:text-indigo-400 active:text-secondary'
+                `text-foreground dark:text-primary dark:hover:text-indigo-400`
               )}
             >
               {/* <span className="block sm:hidden">{navItem.icon}</span> */}
-              <strong className="text-sm sm:text-sm md:text-lg lg:text-xl">
+              <strong
+                className={`${pathname === `${navItem.link}` ? 'text-secondary' : ''} 
+                text-sm sm:text-sm md:text-lg lg:text-xl`}
+              >
                 {navItem.name}
               </strong>
             </Link>
