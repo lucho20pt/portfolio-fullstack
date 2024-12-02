@@ -14,7 +14,7 @@ import { HeroProps } from '@/components/hero'
 import { TechSkillsProps } from '@/components/tech-skills'
 import { ServicesProps } from '@/components/services'
 import { ArticleProps } from '@/components/about'
-import { ProjectListProps } from '@/components/projects'
+import { ProjectListProps, ProjectDetailProps } from '@/components/projects'
 
 // PageProps interface
 export type PageProps = Page
@@ -207,6 +207,28 @@ export async function getProjectsList(
     return null
   } catch (error) {
     console.error('Error fetching projects data:', error)
+    return null
+  }
+}
+
+// Get ProjectDetail component data
+export async function getProjectDetail(
+  page: string,
+  id: string
+): Promise<ProjectDetailProps | null> {
+  try {
+    // Reuse getProjectsList function to fetch projects list
+    const projectsList = await getProjectsList(page)
+
+    if (projectsList && projectsList.project) {
+      // Find the project by _key
+      const project = projectsList.project.find((proj) => proj._key === id)
+      return project ? project : null
+    }
+
+    return null
+  } catch (error) {
+    console.error('Error fetching project detail:', error)
     return null
   }
 }
