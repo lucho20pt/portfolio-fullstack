@@ -1,3 +1,5 @@
+// components/projects/Project.tsx
+
 import * as React from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
@@ -14,6 +16,7 @@ import {
 
 export type ProjectProps = {
   className?: string
+  id: string
   title: string
   description: Array<{
     _key: string
@@ -40,6 +43,7 @@ export type ProjectProps = {
 
 export const Project = ({
   className,
+  id,
   title,
   description,
   tech,
@@ -48,7 +52,7 @@ export const Project = ({
   return (
     <Card className={cn(className)}>
       <CardHeader>
-        <CardTitle className='sm:text-xl'>{title}</CardTitle>
+        <CardTitle className="sm:text-xl">{title}</CardTitle>
         {imageLink && (
           <Image
             title="logo"
@@ -86,10 +90,10 @@ export const Project = ({
         </ul>
         <ButtonSecondary
           className="text-sm text-secondary hover:text-white hover:bg-indigo-500/50"
-          href="/"
           aria-label="View More"
+          href={`/projects/${id}`}
         >
-          View More
+          View Detail
         </ButtonSecondary>
       </CardFooter>
     </Card>

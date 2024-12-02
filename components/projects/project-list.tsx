@@ -31,6 +31,7 @@ export const ProjectsList = ({
           project.map((item) => (
             <Project
               key={item._key}
+              id={item._key}
               title={item.title}
               description={item.description}
               tech={item.tech}
