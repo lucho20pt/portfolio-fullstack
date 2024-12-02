@@ -70,14 +70,14 @@ export const Project = ({
       <CardFooter>
         <ul className="flex flex-row flex-wrap items-center gap-3 max-w-[50%] sm:max-w-full">
           {tech.map((techItem) => (
-            <li key={techItem.skill}>
+            <li key={techItem.skill} className="overflow-hidden">
               {techItem.image.asset && (
                 <Image
                   title={techItem.skill}
                   height={30}
                   width={30}
                   alt={techItem.skill}
-                  className="object-cover !m-0 !p-0 object-top relative transition duration-500 w-5"
+                  className="object-cover !m-0 !p-0 object-top relative transition duration-500 h-5"
                   src={urlFor(techItem.image.asset._ref).width(30).url()}
                 />
               )}
