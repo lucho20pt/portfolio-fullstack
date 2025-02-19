@@ -71,14 +71,14 @@ export const ProjectDetail = ({ project }: { project: ProjectDetailProps }) => {
           <div className="flex items-center justify-center gap-5">
             <ButtonSecondary
               className="text-lg text-secondary hover:text-white hover:bg-indigo-500/50"
-              aria-label="View More"b
+              aria-label="View GitHub"
               href="https://google.com"
             >
               GitHub
             </ButtonSecondary>
             <ButtonSecondary
               className="text-lg text-secondary hover:text-white hover:bg-indigo-500/50"
-              aria-label="View More"
+              aria-label="View Website"
               href="https://google.com"
             >
               Website
