@@ -64,14 +64,14 @@ export const Project = ({
           />
         )}
       </CardHeader>
-      <CardContent className="min-h-32 overflow-hidden">
+      <CardContent className="min-h-32 overflow-hidden bg-transparent border-0 shadow-none">
         {description.map((block) =>
           block.children.map((child) => (
             <CardDescription key={child._key}>{child.text}</CardDescription>
           ))
         )}
       </CardContent>
-      <CardFooter>
+      <CardFooter className='shadow-none'>
         <ul className="flex flex-row flex-wrap items-center gap-3 max-w-[50%] sm:max-w-full">
           {tech.map((techItem) => (
             <li key={techItem.skill} className="overflow-hidden">
@@ -81,7 +81,7 @@ export const Project = ({
                   height={30}
                   width={30}
                   alt={techItem.skill}
-                  className="object-cover !m-0 !p-0 object-top relative transition duration-500 h-5"
+                  className="object-contain !m-0 !p-0 object-top relative transition duration-500 max-h-5 w-5"
                   src={urlFor(techItem.image.asset._ref).width(30).url()}
                 />
               )}
