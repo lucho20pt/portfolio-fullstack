@@ -3,6 +3,7 @@ import { getHero, getMetadata, getArticles } from '@/app/actions'
 import { Hero, HeroProps } from '@/components/hero'
 import { Article, ArticleProps } from '@/components/about'
 import { Comunications } from '@/components/comunications'
+import { ButtonPrimary } from '@/components/ui/tailwindcss-buttons'
 
 export const revalidate = 60
 const page = 'About'
@@ -16,14 +17,13 @@ export const metadata: Metadata = {
 export default async function About() {
   const heroData: HeroProps | null = await getHero(page) // allow for null
   const articleData: ArticleProps[] | null = await getArticles(page)
-  // console.log('articleData', articleData)
 
   return (
     <>
       {heroData ? <Hero heroData={heroData} /> : <p>{'loading...'}</p>}
 
-      <div className="container flex flex-col items-center mx-auto gap-28 max-w-full">
-        <section id="about" className='flex flex-col gap-28'>
+      <div className="container flex flex-col items-center mx-auto gap-20 max-w-full">
+        <section id="about" className="flex flex-col gap-20">
           {articleData && articleData.length > 0 ? (
             articleData.map((article) => (
               <Article key={article._key} {...article} />
@@ -32,6 +32,15 @@ export default async function About() {
             <p>{'loading...'}</p>
           )}
         </section>
+
+        <ButtonPrimary
+          className="text-xl"
+          href="/projects"
+          aria-label="View Projects"
+        >
+          View Some Projects
+        </ButtonPrimary>
+        
         <Comunications />
       </div>
     </>
