@@ -69,6 +69,7 @@ export const FloatingNav = ({
       >
         <Link
           href="/"
+          aria-label="Home"
           className={cn(
             'relative items-center flex text-foreground dark:text-primary dark:hover:text-indigo-400 focus:text-secondary'
           )}
@@ -91,6 +92,7 @@ export const FloatingNav = ({
             <Link
               key={`link=${idx}`}
               href={navItem.link}
+              aria-label={navItem.name}
               className={cn(
                 `text-foreground dark:text-primary dark:hover:text-indigo-400`
               )}

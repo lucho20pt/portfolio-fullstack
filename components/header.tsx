@@ -20,10 +20,9 @@ export const Header = () => {
     >
       <GridDotBackground className="dark:bg-grid-white/[0.05] bg-grid-black/[0.10]">
         <BackgroundBeamsWithCollision className="items-center justify-between container h-full">
-
           {/*logo*/}
           <h1 className="hover:opacity-80">
-            <Link href="/">
+            <Link href="/" aria-label="Home">
               <Image
                 src="/logo2.svg"
                 alt="Daniel Batista - logo"
@@ -41,7 +40,11 @@ export const Header = () => {
 
           {/*linkedin*/}
           <div className="hover:opacity-80">
-            <Link href="https://www.linkedin.com/in/daniel-batista-0609a430" target='_blank'>
+            <Link
+              href="https://www.linkedin.com/in/daniel-batista-0609a430"
+              target="_blank"
+              aria-label="Daniel Batista LinkedIn"
+            >
               <FaLinkedin className="h-auto w-[32px] md:w-[40px] mb-3" />
             </Link>
             <span className="hidden">Daniel Batista Linkedin</span>

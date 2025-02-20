@@ -1,5 +1,3 @@
-// components/projects/ProjectDetail.tsx
-
 import React from 'react'
 import Image from 'next/image'
 import { urlFor } from '@/app/utils/sanityImage'
@@ -7,7 +5,7 @@ import { ProjectProps } from '@/components/projects/project'
 import {
   Card,
   CardHeader,
-  CardTitle,
+  CardHeading,
   CardContent,
   CardDescription,
   CardFooter,
@@ -23,9 +21,9 @@ export const ProjectDetail = ({ project }: { project: ProjectDetailProps }) => {
   return (
     <Card className="flex md:w-full lg:max-w-4xl xl:max-w-6xl border-0 mt-10 sm:mt-20 p-5 sm:p-10 gap-10 bg-secondary/5 hover:bg-secondary/5 lg:shadow-md lg:shadow-secondary">
       <CardHeader className="p-5 sm:p-10 h-auto">
-        <CardTitle className="text-lg sm:text-2xl md:text-4xl">
+        <CardHeading className="text-lg sm:text-2xl md:text-4xl">
           {title}
-        </CardTitle>
+        </CardHeading>
         {brandImage?.asset && (
           <Image
             title="logo"
@@ -57,6 +55,7 @@ export const ProjectDetail = ({ project }: { project: ProjectDetailProps }) => {
             height={150}
             width={400}
             alt="website"
+            aria-label="Project website screenshot"
             className="object-cover !m-0 !p-0 object-top relative transition duration-500"
             src="/quinta-3.png"
           />
@@ -98,6 +97,7 @@ export const ProjectDetail = ({ project }: { project: ProjectDetailProps }) => {
                     height={30}
                     width={30}
                     alt={techItem.skill}
+                    aria-label={techItem.skill}
                     className="object-cover !m-0 !p-0 object-top relative transition duration-500 h-8"
                     src={urlFor(techItem.image.asset._ref).width(60).url()}
                   />

@@ -34,6 +34,22 @@ const CardHeader = React.forwardRef<
 ))
 CardHeader.displayName = 'CardHeader'
 
+// heading
+const CardHeading = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <h2
+    ref={ref}
+    className={cn(
+      'font-semibold leading-none tracking-tight text-left',
+      className
+    )}
+    {...props}
+  />
+))
+CardHeading.displayName = 'CardHeading'
+
 // title
 const CardTitle = React.forwardRef<
   HTMLParagraphElement,
@@ -41,7 +57,10 @@ const CardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h3
     ref={ref}
-    className={cn('font-semibold leading-none tracking-tight text-left', className)}
+    className={cn(
+      'font-semibold leading-none tracking-tight text-left',
+      className
+    )}
     {...props}
   />
 ))
@@ -92,4 +111,12 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = 'CardFooter'
 
-export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
+export {
+  Card,
+  CardHeader,
+  CardHeading,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+}
