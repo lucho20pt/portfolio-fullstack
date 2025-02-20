@@ -47,14 +47,16 @@ export const Article = ({ _key, title, description }: ArticleProps) => {
     >
       <HeadingPrimary>{title}</HeadingPrimary>
 
-      <div className=' gap-5 flex flex-col'>
+      <div className="gap-5 flex flex-col">
         {paragraphs && (
           <PortableText
             value={paragraphs}
             components={{
               block: {
                 normal: ({ children }) => (
-                  <p className="border-l border-secondary pl-5 text-lg font-light">{children}</p>
+                  <p className="border-l border-secondary/50 pl-5 text-lg font-light">
+                    {children}
+                  </p>
                 ),
               },
               marks: {

@@ -32,13 +32,13 @@ export default async function Home() {
           <p>{'loading...'}</p>
         )}
 
-        <Comunications />
-
         {servicesData ? (
           <Services servicesData={servicesData} />
         ) : (
           <p>{'loading...'}</p>
         )}
+
+        <Comunications />
       </div>
     </>
   )
