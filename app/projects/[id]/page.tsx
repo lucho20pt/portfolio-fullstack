@@ -2,6 +2,7 @@
 import { Metadata } from 'next'
 import { getProjectDetail } from '@/app/actions'
 import { ProjectDetail, ProjectDetailProps } from '@/components/projects'
+import { ButtonSecondary } from '@/components/ui/tailwindcss-buttons'
 
 // Set revalidation time for ISR
 export const revalidate = 60
@@ -33,5 +34,12 @@ export default async function ProjectDetailPage({ params }: Params) {
     return <div>Project not found</div>
   }
 
-  return <ProjectDetail project={project} />
+  return (
+    <>
+      <ProjectDetail project={project} />
+      <ButtonSecondary href="/projects" className='text-xl' aria-label="Back to Projects">
+        Back to Projects
+      </ButtonSecondary>
+    </>
+  )
 }
