@@ -62,7 +62,8 @@ export const ButtonSecondary = ({
     <button
       className={cn(
         'inline-flex items-center justify-center rounded-md px-4 py-2 '+
-        'border border-secondary ',
+        'border border-secondary ' +
+        'text-secondary hover:text-white hover:bg-indigo-500/50',
         className
       )}
       onClick={handleClick}
