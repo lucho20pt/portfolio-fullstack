@@ -64,9 +64,9 @@ export const ProjectDetail = ({ project }: { project: ProjectDetailProps }) => {
 
       <CardFooter className="flex flex-col-reverse md:flex-row items-center justify-around p-5 w-auto gap-10 shadow-none border-t">
         <div className="flex flex-col items-center justify-center gap-5">
-          <h4 className="text-lg text-gray-300">
+          <h3 className="text-lg text-gray-300">
             <code>know more 🔎</code>
-          </h4>
+          </h3>
           <div className="flex items-center justify-center gap-5">
             <ButtonSecondary
               className="text-lg"
@@ -85,9 +85,9 @@ export const ProjectDetail = ({ project }: { project: ProjectDetailProps }) => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-5">
-          <h4 className="text-lg text-gray-300">
+          <h3 className="text-lg text-gray-300">
             <code>developed with 💙</code>
-          </h4>
+          </h3>
           <ul className="flex flex-row flex-wrap items-center justify-center gap-5">
             {tech.map((techItem) => (
               <li key={techItem.skill} className="overflow-hidden">
