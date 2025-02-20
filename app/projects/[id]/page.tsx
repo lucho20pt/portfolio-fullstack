@@ -37,7 +37,11 @@ export default async function ProjectDetailPage({ params }: Params) {
   return (
     <>
       <ProjectDetail project={project} />
-      <ButtonSecondary href="/projects" className='text-xl' aria-label="Back to Projects">
+      <ButtonSecondary
+        href="/projects#projects"
+        className="text-xl"
+        aria-label="Back to Projects"
+      >
         Back to Projects
       </ButtonSecondary>
     </>
