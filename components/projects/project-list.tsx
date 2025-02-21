@@ -26,7 +26,7 @@ export const ProjectsList = ({
     >
       <HeadingPrimary>{intro}</HeadingPrimary>
 
-      <div className="flex flex-row flex-wrap items-center justify-center gap-8 md:gap-10 w-full">
+      <div className="flex flex-row flex-wrap items-center justify-center gap-12 md:gap-16 w-full">
         {project && project.length > 0 ? (
           project.map((item) => (
             <Project

@@ -59,7 +59,7 @@ export const Project = ({
             height={75}
             width={150}
             alt="logo"
-            className="object-cover !m-0 !p-0 object-top relative transition duration-500 w-24 sm:w-28"
+            className="object-cover !m-0 !p-0 object-top relative transition duration-500 max-h-12 sm:max-h-14"
             src={imageLink}
           />
         )}

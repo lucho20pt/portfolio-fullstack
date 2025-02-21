@@ -19,24 +19,24 @@ export const ProjectDetail = ({ project }: { project: ProjectDetailProps }) => {
   // console.log(project)
 
   return (
-    <Card className="flex md:w-full lg:max-w-4xl xl:max-w-6xl border-0 mt-10 sm:mt-20 p-5 sm:p-10 gap-16 bg-secondary/5 hover:bg-secondary/5 lg:shadow-md lg:shadow-secondary/30">
+    <Card className="flex md:w-full lg:max-w-4xl xl:max-w-6xl border-0 mt-10 sm:mt-20 p-5 sm:p-10 mx-4 gap-10 lg:shadow-md lg:shadow-secondary/30 hover:bg-secondary/15">
       <CardHeader className="p-5 sm:p-10 h-auto">
         <CardHeading className="text-lg sm:text-2xl md:text-4xl">
           {title}
         </CardHeading>
         {brandImage?.asset && (
           <Image
-            title="logo"
+            title={title}
             height={100}
             width={160}
-            alt="logo"
-            className="object-cover !m-0 !p-0 object-top relative transition duration-500 w-24 sm:w-40"
+            alt={title}
+            className="object-cover !m-0 !p-0 object-top relative transition duration-500 max-w-24 sm:max-w-40 max-h-12 sm:max-h-16"
             src={urlFor(brandImage.asset._ref).width(320).url()}
           />
         )}
       </CardHeader>
 
-      <CardContent className="flex flex-col-reverse md:flex-row items-center justify-between min-h-auto p-5 sm:p-10 gap-10 overflow-hidden bg-none shadow-none">
+      <CardContent className="flex flex-col-reverse md:flex-row items-center justify-between min-h-auto p-5 sm:p-10 gap-10 overflow-hidden">
         <div className="flex flex-col items-start p-4 md:w-3/5">
           {description.map((block) =>
             block.children.map((child) => (
@@ -62,7 +62,7 @@ export const ProjectDetail = ({ project }: { project: ProjectDetailProps }) => {
         </div>
       </CardContent>
 
-      <CardFooter className="flex flex-col-reverse md:flex-row items-center justify-around p-5 w-auto gap-10 shadow-none border-t">
+      <CardFooter className="flex flex-col-reverse md:flex-row items-center justify-around p-5 w-auto gap-10 shadow-none">
         <div className="flex flex-col items-center justify-center gap-5">
           <h3 className="text-lg text-gray-300">
             <code>know more 🔎</code>
