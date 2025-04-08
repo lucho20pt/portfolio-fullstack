@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Features
 
-- **Next.js 13**: Built with the latest features of Next.js, including the App Router.
+- **Next.js 15**: Built with the latest features of Next.js, including the App Router.
 - **Sanity CMS**: Integrated with [Sanity](https://www.sanity.io/) as the headless CMS for managing content dynamically.
 - **Reusable Actions**: Centralized logic for fetching data from Sanity using reusable functions in the `actions` directory.
 - **Responsive Design**: Fully responsive and optimized for all devices.
